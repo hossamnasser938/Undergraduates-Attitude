@@ -2,6 +2,7 @@
     <string name="app_name">Undergraduates\' Attitude</string>
     <string name="welcome_message">Welcome, this is your assistance for achieving optimal Attitude during the entire week</string>
     <string name="create_profile">Create Profile</string>
+    <string name="add">Add</string>
     <string name="add_course">Add Course</string>
     <string name="add_activity">Add Activity</string>
     <string name="report">Report</string>
@@ -11,4 +12,7 @@
     <string name="college">College</string>
     <string name="department">Department</string>
     <string name="academic_year">Academic Year</string>
+    <string name="category">Category</string>
+    <string name="hours">Hours</string>
+    <string name="minutes">Minutes</string>
 </resources>
