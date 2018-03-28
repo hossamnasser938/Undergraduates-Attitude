@@ -2,6 +2,8 @@ package com.example.android.undergraduatesattitude;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class AddActivityActivity extends AppCompatActivity {
 
@@ -10,4 +12,10 @@ public class AddActivityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_activity);
     }
+
+    private void notifyActivityAdded(View view){
+        Toast toast = Toast.makeText(this , getResources().getString(R.string.activity_added_successfully) , Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
 }
