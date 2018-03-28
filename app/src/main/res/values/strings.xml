@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Undergraduates\'Attitude</string>
+    <string name="welcome_message">Welcome, this is your assistance for achieving optimal Attitude during the entire week</string>
+    <string name="create_profile">Create Profile</string>
 </resources>
