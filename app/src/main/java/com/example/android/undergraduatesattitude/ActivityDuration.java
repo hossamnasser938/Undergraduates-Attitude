@@ -31,7 +31,7 @@ public class ActivityDuration {
     }
     
     static public ActivityDuration addTwoDurations(ActivityDuration duration1, ActivityDuration duration2){
-        ActivityDuration addedDuration = new ActivityDuration(0 , 0);
+        ActivityDuration addedDuration = new ActivityDuration(0, 0);
         addedDuration.hours = duration1.hours() + duration2.hours();
         addedDuration.minutes = duration1.minutes() + duration2.minutes();
         if(addedDuration.minutes >= 60){
@@ -39,4 +39,17 @@ public class ActivityDuration {
             addedDuration.minutes -= 60;
         }
         return addedDuration;
+    }
+    
+    public ActivityDuration mulDuration(int multiplier){
+        ActivityDuration multipliedDuration = new ActivityDuration(0, 0);
+        multipliedDuration.hours = this.hours * multiplier;
+        multipliedDuration.minutes = this.minutes * multiplier;
+        if(multipliedDuration.minutes >= 60){
+            multipliedDuration.hours += multipliedDuration.minutes / 60;
+            multipliedDuration.minutes %= 60;
+        }
+        return multipliedDuration;
+    }
+    
 }
