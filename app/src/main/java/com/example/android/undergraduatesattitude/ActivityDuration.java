@@ -1,15 +1,15 @@
 package com.example.android.undergraduatesattitude;
 
 /**
- * Created by Hosam on 3/28/2018.
+ *
+ * @author abdelkhalik
  */
-
 public class ActivityDuration {
 
     private int hours;
     private int minutes;
 
-    ActivityDuration(int hours, int minutes){
+    ActivityDuration(int hours, int minutes) {
         this.hours = hours;
         this.minutes = minutes;
     }
