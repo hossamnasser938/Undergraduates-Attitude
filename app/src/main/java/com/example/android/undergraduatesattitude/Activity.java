@@ -1,16 +1,16 @@
 package com.example.android.undergraduatesattitude;
 
 /**
- * Created by Hosam on 3/28/2018.
+ *
+ * @author abdelkhalik
  */
-
 public class Activity {
-
-    private String name;
-    private String category;
+    
+String name;
+    Category category;
     private ActivityDuration duration;
 
-    Activity(String name, String category, ActivityDuration duration){
+    Activity(String name, Category category, ActivityDuration duration){
         this.name = name;
         this.category = category;
         this.duration = duration;
@@ -24,11 +24,11 @@ public class Activity {
         this.name = name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -40,3 +40,4 @@ public class Activity {
         this.duration = duration;
     }
 }
+
