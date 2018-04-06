@@ -147,10 +147,8 @@ public class Course {
     }
 
     static public ActivityDuration calculateAllCourseHours(Course course){
-        courseInfo(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject)
-        courseHomework(Difficulty difficulty, ActivityDuration attendanceHours)
         ActivityDuration allCourseHours = ActivityDuration.addTwoDurations(courseInfo(course.difficulty, course.attendanceHours, course.assignments, course.finalProject), courseHomework(course.difficulty, course.attendanceHours));
-        allCourseHours = ActivityDuration.addTwoDurations(allCourseHours + course.attendanceHours);
+        allCourseHours = ActivityDuration.addTwoDurations(allCourseHours , course.attendanceHours);
         return allCourseHours;
     }
 
