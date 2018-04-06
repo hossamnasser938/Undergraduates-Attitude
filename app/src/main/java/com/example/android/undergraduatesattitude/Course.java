@@ -106,7 +106,7 @@ public class Course {
         return totalHomeworkHours;
     }
 
-    static private ActivityDuration courseInf(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject) {
+    static private ActivityDuration courseInfo(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject) {
         ActivityDuration totalCourseInfo = null;
         int courseHourse = attendanceHours.getHours() + ((attendanceHours.getMinutes()) / 60);
         int courseHomeworkHours = 0;
@@ -151,5 +151,12 @@ public class Course {
         return totalCourseInfo;
     }
 
+    static public ActivityDuration calculateAllCourseHours(Course course){
+        courseInfo(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject)
+        courseHomework(Difficulty difficulty, ActivityDuration attendanceHours)
+        ActivityDuration allCourseHours = ActivityDuration.addTwoDurations(courseInfo(course.difficulty, course.attendanceHours, course.assignments, course.finalProject), courseHomework(course.difficulty, course.attendanceHours));
+        allCourseHours = ActivityDuration.addTwoDurations(allCourseHours + course.attendanceHours);
+        return allCourseHours;
+    }
 
 }
