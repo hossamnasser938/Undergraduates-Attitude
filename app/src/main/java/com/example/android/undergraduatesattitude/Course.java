@@ -89,13 +89,13 @@ public class Course {
         
         switch (difficulty) {
             case EASY:
-                totalHomeworkHours = mulDuration(1);
+                totalHomeworkHours = attendanceHours;
                 break;
             case MEDIUM:
-                totalHomeworkHours = mulDuration(2);
+                totalHomeworkHours = attendanceHours.mulDuration(2);
                 break;
             case DIFFICULT:
-                totalHomeworkHours = mulDuration(3);
+                totalHomeworkHours = attendanceHours.mulDuration(3);
                 break;
             default:
                 break;
@@ -110,13 +110,13 @@ public class Course {
         if (finalProject == true) {
             switch (difficulty) {
                 case EASY:
-                    totalCourseInfo = mulDuration(1);
+                    totalCourseInfo = attendanceHours;
                     break;
                 case MEDIUM:
-                    totalCourseInfo = mulDuration(2);
+                    totalCourseInfo = attendanceHours.mulDuration(2);
                     break;
                 case DIFFICULT:
-                    totalCourseInfo = mulDuration(3);
+                    totalCourseInfo = attendanceHours.mulDuration(3);
                     break;
                 default:
                     break;
@@ -128,13 +128,13 @@ public class Course {
         if (assigments == true) {
             switch (difficulty) {
                 case EASY:
-                    totalCourseInfo = mulDuration(1);
+                    totalCourseInfo = attendanceHours;
                     break;
                 case MEDIUM:
-                    totalCourseInfo = mulDuration(2);
+                    totalCourseInfo = attendanceHours.mulDuration(2);
                     break;
                 case DIFFICULT:
-                    totalCourseInfo = mulDuration(3);
+                    totalCourseInfo = attendanceHours.mulDuration(3);
                     break;
                 default:
                     break;
