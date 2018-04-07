@@ -59,6 +59,22 @@ public class KnowledgeBase {
     OptimalActivity reading = new OptimalActivity("Reading", Category.SKILLS, new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
 
     //=====================================================================================
+    
+       static public final OptimalCategory HealthtCat = new OptimalCategory(Category.HEALTH,new ActivityDuration(63, 0), new ActivityDuration(42, 0));
+    static public final OptimalCategory LifeCat = new OptimalCategory(Category.LIFE, new ActivityDuration(73, 0),new ActivityDuration(0, 0));
+    //static public final OptimalCategory EducationalCat = new OptimalCategory(Category.EDUCATIONAL, new ActivityDuration(73, 0),new ActivityDuration(0, 0));
+    static public final OptimalCategory ResponsibilityCat = new OptimalCategory(Category.RESPONSIBILITY,new ActivityDuration(25, 0), new ActivityDuration(13, 0));
+    static public final OptimalCategory EntertainmentCat = new OptimalCategory(Category.ENTERTAINMENT, new ActivityDuration(14, 0), new ActivityDuration(7, 0));
+    static public final OptimalCategory SkillsCat = new OptimalCategory(Category.SKILLS, new ActivityDuration(42, 0), new ActivityDuration(14, 0));
+           /*****************************************************/    
+    
+    static public final ArrayList<String> optimalCategotiesList = new ArrayList<>(Arrays.asList("HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
+    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
+    
+    //=====================================================================================================
+    
+    
+    
     ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation,
             religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneAndallsAndMail, hobby, socialMedia,
              leisure, languageAcquisition, teaching, writing, reading));
