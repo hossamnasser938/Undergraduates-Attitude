@@ -85,77 +85,71 @@ public class Course {
     }
 
     static private ActivityDuration courseHomework(Difficulty difficulty, ActivityDuration attendanceHours) {
-        ActivityDuration totalHomeworkHours = null;
-        int courseHourse = attendanceHours.getHours() + ((attendanceHours.getMinutes()) / 60);
-        int courseHomeworkHours = 0;
+        ActivityDuration totalHomeworkHours = new ActivityDuration(0,0);
+        
         switch (difficulty) {
             case EASY:
-                courseHomeworkHours = courseHourse * 1;
+                totalHomeworkHours = attendanceHours;
                 break;
             case MEDIUM:
-                courseHomeworkHours = courseHourse * 2;
+                totalHomeworkHours = attendanceHours.mulDuration(2);
                 break;
             case DIFFICULT:
-                courseHomeworkHours = courseHourse * 3;
+                totalHomeworkHours = attendanceHours.mulDuration(3);
                 break;
             default:
                 break;
         }
-        totalHomeworkHours.setHours(courseHomeworkHours);
-        totalHomeworkHours.setMinutes(0);
+        
         return totalHomeworkHours;
     }
 
-    static private ActivityDuration courseInf(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject) {
-        ActivityDuration totalCourseInfo = null;
-        int courseHourse = attendanceHours.getHours() + ((attendanceHours.getMinutes()) / 60);
-        int courseHomeworkHours = 0;
+    static private ActivityDuration courseInfo(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject) {
+        ActivityDuration totalCourseInfo = new ActivityDuration(0,0);
+        
         if (finalProject == true) {
             switch (difficulty) {
                 case EASY:
-                    courseHomeworkHours = courseHourse * 1;
+                    totalCourseInfo = attendanceHours;
                     break;
                 case MEDIUM:
-                    courseHomeworkHours = courseHourse * 2;
+                    totalCourseInfo = attendanceHours.mulDuration(2);
                     break;
                 case DIFFICULT:
-                    courseHomeworkHours = courseHourse * 3;
+                    totalCourseInfo = attendanceHours.mulDuration(3);
                     break;
                 default:
                     break;
 
             }
-            totalCourseInfo.setHours(courseHomeworkHours);
-            totalCourseInfo.setMinutes(0);
+            
 
         }
         if (assigments == true) {
             switch (difficulty) {
                 case EASY:
-                    courseHomeworkHours = courseHourse * 1;
+                    totalCourseInfo = attendanceHours;
                     break;
                 case MEDIUM:
-                    courseHomeworkHours = courseHourse * 2;
+                    totalCourseInfo = attendanceHours.mulDuration(2);
                     break;
                 case DIFFICULT:
-                    courseHomeworkHours = courseHourse * 3;
+                    totalCourseInfo = attendanceHours.mulDuration(3);
                     break;
                 default:
                     break;
 
             }
-            totalCourseInfo.setHours(courseHomeworkHours);
-            totalCourseInfo.setMinutes(0);
+            
 
         }
         return totalCourseInfo;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    static public ActivityDuration calculateAllCourseHours(Course course){
+        ActivityDuration allCourseHours = ActivityDuration.addTwoDurations(courseInfo(course.difficulty, course.attendanceHours, course.assignments, course.finalProject), courseHomework(course.difficulty, course.attendanceHours));
+        allCourseHours = ActivityDuration.addTwoDurations(allCourseHours , course.attendanceHours);
+        return allCourseHours;
     }
 
 }

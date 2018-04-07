@@ -7,17 +7,23 @@ package com.example.android.undergraduatesattitude;
  */
 public class CommittedActivity extends OptimalActivity {
 
-    ActivityDuration committedDuration;
     private String advice;
 
-    public CommittedActivity(String name, Category category, ActivityDuration max, ActivityDuration min, Priority priority, String advice, ActivityDuration committedDuration) {
-        super(name, category, max, min, priority);
-        this.committedDuration = committedDuration;
+    public CommittedActivity(Category category, String name, ActivityDuration committedDuration, Priority priority) {
+        super(category, name, KnowledgeBase.getActivityOptimalMaxDuration(name), KnowledgeBase.getActivityOptimalMinDuration(name), priority);
+        this.setDuration(committedDuration);
 
     }
 
-    ;
-    
+
+    public ActivityDuration getCommittedDuration() {
+        return getDuration();
+    }
+
+    public void setCommittedDuration(ActivityDuration duration) {
+        this.setDuration(duration);
+    }
+
     /**
      * @return the advice
      */
@@ -25,22 +31,7 @@ public class CommittedActivity extends OptimalActivity {
         return advice;
     }
 
-    /**
-     * @param advice the advice to set
-     */
-    public void setAdvice(String advice) {
-        this.advice = advice;
-    }
-
-    public ActivityDuration setCommittedDuration() {
-        return committedDuration;
-    }
-
-    public void setCommittedDuration(ActivityDuration duration) {
-        this.committedDuration = duration;
-    }
-
-    public String generateAdice(ActivityDuration committedDuration, Priority priority, ActivityDuration max, ActivityDuration min) {
+    public void generateAdice(ActivityDuration committedDuration, Priority priority, ActivityDuration max, ActivityDuration min) {
         String Advice = null;
         double CommittedDuration = committedDuration.getHours() + ((committedDuration.getMinutes()) / 60);
         double maxDuration = max.getHours() + ((max.getMinutes()) / 60);
@@ -71,6 +62,7 @@ public class CommittedActivity extends OptimalActivity {
                 break;
 
         }
-        return Advice;
+
+        this.advice = Advice;
     }
 }
