@@ -10,7 +10,12 @@ String name;
     Category category;
     private ActivityDuration duration;
 
-    Activity(String name, Category category, ActivityDuration duration){
+    public Activity(Category category, String name){
+        this.name = name;
+        this.category = category;
+    }
+
+    public Activity(String name, Category category, ActivityDuration duration){
         this.name = name;
         this.category = category;
         this.duration = duration;

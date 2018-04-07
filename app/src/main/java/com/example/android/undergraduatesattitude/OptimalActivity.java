@@ -6,8 +6,8 @@ package com.example.android.undergraduatesattitude;
  */
 public class OptimalActivity extends Activity {
 
-    private  ActivityDuration max;
-    
+    private  ActivityDuration maxDuration;
+    private  ActivityDuration minDuration;
     private  Priority priority;
     
     enum Priority {
@@ -16,10 +16,11 @@ public class OptimalActivity extends Activity {
         MANDATORY ,
     };
 
-    public OptimalActivity(String name , Category category ,ActivityDuration max,ActivityDuration min  ,Priority priority) 
+    public OptimalActivity(Category category, String name, ActivityDuration maxDuration, ActivityDuration minDuration, Priority priority)
     {
-        super(name,category,min);
-       this.max=max;
+        super(category,name);
+        this.maxDuration=maxDuration;
+        this.minDuration=minDuration;
         this.priority=priority;
     }
     
