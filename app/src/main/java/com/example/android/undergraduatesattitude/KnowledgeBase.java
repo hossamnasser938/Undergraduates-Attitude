@@ -57,7 +57,7 @@ public class KnowledgeBase {
     static public final OptimalCategory SkillsCat = new OptimalCategory(Category.SKILLS, new ActivityDuration(42, 0), new ActivityDuration(14, 0));
            /*****************************************************/    
     
-    static public final ArrayList<String> optimalCategotiesList = new ArrayList<>(Arrays.asList("HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
+    static public final ArrayList<String> optimalCategoryList = new ArrayList<>(Arrays.asList("HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
     static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
     
     //=====================================================================================================
