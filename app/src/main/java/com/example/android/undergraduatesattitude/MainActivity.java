@@ -14,13 +14,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    private void navigateToCreateProfile(View view){
-        navigateTo(this , CreateProfileActivity.class);
-    }
-
-    static void navigateTo(Context context, Class activity){
-        Intent intent = new Intent(context , activity.getClass());
-        context.startActivity(intent);
+    public void navigateToCreateProfile(View view){
+        Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
+        startActivity(intent);
     }
 
 }

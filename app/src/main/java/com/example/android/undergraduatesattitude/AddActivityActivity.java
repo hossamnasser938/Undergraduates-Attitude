@@ -14,7 +14,7 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     private void notifyActivityAdded(View view){
-        Toast toast = Toast.makeText(this , getResources().getString(R.string.activity_added_successfully) , Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext() , getResources().getString(R.string.activity_added_successfully) , Toast.LENGTH_SHORT);
         toast.show();
     }
 

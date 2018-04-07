@@ -13,7 +13,7 @@ public class Week {
     private Date startDate;
     private Date endDate;
     ArrayList<Activity> activity = new ArrayList<Activity>();
-    Report report = new Report();
+    //Report report = new Report();
 
     /**
      * @return the startDate
@@ -43,8 +43,8 @@ public class Week {
         this.endDate = endDate;
     }
 
-    public Report getReport() {
+    /*public Report getReport() {
         return report;
-    }
+    }*/
 
 }
