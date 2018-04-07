@@ -6,7 +6,7 @@ package com.example.android.undergraduatesattitude;
  */
 public class Activity {
     
-String name;
+    String name;
     Category category;
     private ActivityDuration duration;
 

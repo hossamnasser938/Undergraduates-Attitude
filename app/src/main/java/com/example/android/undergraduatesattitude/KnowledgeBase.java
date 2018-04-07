@@ -54,9 +54,20 @@ public class KnowledgeBase {
 
     static public ActivityDuration getActivityOptimalMaxDuration(String name){
         return optimalActivities.get(optimalActivityList.indexOf(name)).getMaxDuration();
+
+    }
+
+    static public ActivityDuration getCategoryOptimalMinDuration(String name){
+        return optimalActivities.get(optimalActivityList.indexOf(name)).getMinDuration();
+    }
+
+    static public ActivityDuration getCategoryOptimalMaxDuration(String name){
+        return optimalCategories.get(optimalCategoryList.indexOf(name)).getMaxDuration();
+
     }
 
     static public ActivityDuration getActivityOptimalMinDuration(String name){
-        return optimalActivities.get(optimalActivityList.indexOf(name)).getMinDuration();
+        return optimalCategories.get(optimalCategoryList.indexOf(name)).getMinDuration();
     }
+
 }

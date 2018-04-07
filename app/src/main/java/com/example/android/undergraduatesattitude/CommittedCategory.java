@@ -4,41 +4,24 @@ package com.example.android.undergraduatesattitude;
  * Created by Hosam on 4/7/2018.
  */
 
-public class CommittedCategory {
+public class CommittedCategory extends OptimalCategory {
 
-    private Category category;
-    private ActivityDuration optimalHours;
-    private ActivityDuration committedHours;
+    private ActivityDuration committedDuration;
     private int percentage;
 
-    public CommittedCategory(Category category, ActivityDuration optimalHours, ActivityDuration committedHours) {
-        this.setCategory(category);
-        this.setOptimalHours(optimalHours);
-        this.setCommittedHours(committedHours);
+    public CommittedCategory(Category category, ActivityDuration committedHours) {
+        super(category);
+        this.committedDuration = committedDuration;
+        this.setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.toString()));
+        this.setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.toString()));
     }
 
-    public Category getCategory() {
-        return category;
+    public ActivityDuration getCommittedDuration() {
+        return committedDuration;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public ActivityDuration getOptimalHours() {
-        return optimalHours;
-    }
-
-    public void setOptimalHours(ActivityDuration optimalHours) {
-        this.optimalHours = optimalHours;
-    }
-
-    public ActivityDuration getCommittedHours() {
-        return committedHours;
-    }
-
-    public void setCommittedHours(ActivityDuration committedHours) {
-        this.committedHours = committedHours;
+    public void setCommittedHours(ActivityDuration committedDuration) {
+        this.committedDuration = committedDuration;
     }
 
     public int getPercentage() {
@@ -46,8 +29,10 @@ public class CommittedCategory {
     }
 
     public void calculatePercentage() {
-        double optimalHours = this.optimalHours.getHours() + (double) this.optimalHours.getMinutes() / 60;
-        double committedHours = this.committedHours.getHours() + (double) this.committedHours.getMinutes() / 60;
-        this.percentage = (int) (committedHours / optimalHours * 100);
+        double optimalMaxHours = this.getMaxDuration().getHours() + (double) this.getMaxDuration().getMinutes() / 60;
+        double optimalMinHours = this.getMinDuration().getHours() + (double) this.getMinDuration().getMinutes() / 60;
+        double committedHours = this.committedDuration.getHours() + (double) this.committedDuration.getMinutes() / 60;
+        double optimalAverageHours = (optimalMaxHours + optimalMinHours) / 2;
+        this.percentage = (int) (committedHours / optimalAverageHours);
     }
 }
