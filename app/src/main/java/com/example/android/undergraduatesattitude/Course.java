@@ -8,10 +8,10 @@ package com.example.android.undergraduatesattitude;
  */
 public class Course {
 
-    private final Category category;
+    private Category category;
     private String name;
     private ActivityDuration attendanceHours;
-    private boolean assigments;
+    private boolean assignments;
     private boolean finalProject;
 
     public enum Difficulty {
@@ -19,14 +19,15 @@ public class Course {
         MEDIUM,
         DIFFICULT,
     };
-    Difficulty difficulty;
 
-    public Course(Category category, String name, ActivityDuration atendanceHours, Difficulty difficulty, boolean assigments, boolean finalProject) {
+    private Difficulty difficulty;
+
+    public Course(Category category, String name, ActivityDuration atendanceHours, Difficulty difficulty, boolean assignments, boolean finalProject) {
         this.category = category;
         this.name = name;
         this.attendanceHours = atendanceHours;
         this.difficulty = difficulty; //error 
-        this.assigments = assigments;
+        this.assignments = assignments;
         this.finalProject = finalProject;
 
     }
@@ -59,15 +60,15 @@ public class Course {
     /**
      * @return the assigments
      */
-    public boolean hasAssigments() {
-        return assigments;
+    public boolean hasAssignments() {
+        return assignments;
     }
 
     /**
-     * @param assigments the assigments to set
+     * @param assignments the assigments to set
      */
-    public void setAssigments(boolean assigments) {
-        this.assigments = assigments;
+    public void setAssigments(boolean assignments) {
+        this.assignments = assignments;
     }
 
     /**
@@ -105,18 +106,19 @@ public class Course {
     }
 
     static private ActivityDuration courseInfo(Difficulty difficulty, ActivityDuration attendanceHours, boolean assigments, boolean finalProject) {
-        ActivityDuration totalCourseInfo = new ActivityDuration(0,0);
-        
-        if (finalProject == true) {
+        ActivityDuration finalProjectDuration = new ActivityDuration(0,0);
+        ActivityDuration assignmentsDuration = new ActivityDuration(0,0);
+
+        if (finalProject) {
             switch (difficulty) {
                 case EASY:
-                    totalCourseInfo = attendanceHours;
+                    finalProjectDuration = attendanceHours;
                     break;
                 case MEDIUM:
-                    totalCourseInfo = attendanceHours.mulDuration(2);
+                    finalProjectDuration = attendanceHours.mulDuration(2);
                     break;
                 case DIFFICULT:
-                    totalCourseInfo = attendanceHours.mulDuration(3);
+                    finalProjectDuration = attendanceHours.mulDuration(3);
                     break;
                 default:
                     break;
@@ -125,16 +127,16 @@ public class Course {
             
 
         }
-        if (assigments == true) {
+        if (assigments) {
             switch (difficulty) {
                 case EASY:
-                    totalCourseInfo = attendanceHours;
+                    assignmentsDuration = attendanceHours;
                     break;
                 case MEDIUM:
-                    totalCourseInfo = attendanceHours.mulDuration(2);
+                    assignmentsDuration = attendanceHours.mulDuration(2);
                     break;
                 case DIFFICULT:
-                    totalCourseInfo = attendanceHours.mulDuration(3);
+                    assignmentsDuration = attendanceHours.mulDuration(3);
                     break;
                 default:
                     break;
@@ -143,7 +145,7 @@ public class Course {
             
 
         }
-        return totalCourseInfo;
+        return ActivityDuration.addTwoDurations(finalProjectDuration, assignmentsDuration);
     }
 
     static public ActivityDuration calculateAllCourseHours(Course course){

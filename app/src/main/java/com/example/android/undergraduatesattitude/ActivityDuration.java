@@ -32,8 +32,8 @@ public class ActivityDuration {
     
     static public ActivityDuration addTwoDurations(ActivityDuration duration1, ActivityDuration duration2){
         ActivityDuration addedDuration = new ActivityDuration(0, 0);
-        addedDuration.hours = duration1.hours() + duration2.hours();
-        addedDuration.minutes = duration1.minutes() + duration2.minutes();
+        addedDuration.hours = duration1.hours + duration2.hours;
+        addedDuration.minutes = duration1.minutes + duration2.minutes;
         if(addedDuration.minutes >= 60){
             addedDuration.hours += 1;
             addedDuration.minutes -= 60;

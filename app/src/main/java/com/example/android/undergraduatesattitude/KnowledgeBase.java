@@ -18,14 +18,14 @@ public class KnowledgeBase {
     static public final String[] lifeList = {"HouseHold", "Eating and Drinking",
         "Purchasing goods and services", "Transportation", "Religious and Spiritual Activities"};
     static public final ArrayList<String> Life = new ArrayList<>(Arrays.asList(lifeList));
-    static public final String[] eduList = {"Course Attendance", "Course Homework", "Project ", "Assignment", "Research"};
-    static public final ArrayList<String> Educational = new ArrayList<>(Arrays.asList(eduList));
+    static public ArrayList<String> Educational = new ArrayList<>();
     static public final String[] responsList = {"Planning", "Volunteerism", "Socializing and communicating", "Telephone calls, mail, and e-mail"};
     static public final ArrayList<String> Responsibility = new ArrayList<>(Arrays.asList(responsList));
     static public final String[] entertainmentList = {"Hobby", "Social Media", "Leisure"};
     static public final ArrayList<String> Entertainment = new ArrayList<>(Arrays.asList(entertainmentList));
     static public final String[] skillsList = {"Language Acquisition", "Teaching", "Writing", "Reading"};
     static public final ArrayList<String> Skills = new ArrayList<>(Arrays.asList(skillsList));
+
 
     //===============================================================================================
     static public final OptimalActivity sleeping = new OptimalActivity(Category.HEALTH, "Sleeping", new ActivityDuration(56, 0), new ActivityDuration(42, 0), OptimalActivity.Priority.MANDATORY);
@@ -51,7 +51,7 @@ public class KnowledgeBase {
     
     static public final OptimalCategory HealthtCat = new OptimalCategory(Category.HEALTH,new ActivityDuration(63, 0), new ActivityDuration(42, 0));
     static public final OptimalCategory LifeCat = new OptimalCategory(Category.LIFE, new ActivityDuration(73, 0),new ActivityDuration(0, 0));
-    //static public final OptimalCategory EducationalCat = new OptimalCategory(Category.EDUCATIONAL, new ActivityDuration(73, 0),new ActivityDuration(0, 0));
+    static public OptimalCategory EducationalCat = new OptimalCategory(Category.EDUCATIONAL, new ActivityDuration(0, 0),new ActivityDuration(0, 0));
     static public final OptimalCategory ResponsibilityCat = new OptimalCategory(Category.RESPONSIBILITY,new ActivityDuration(25, 0), new ActivityDuration(13, 0));
     static public final OptimalCategory EntertainmentCat = new OptimalCategory(Category.ENTERTAINMENT, new ActivityDuration(14, 0), new ActivityDuration(7, 0));
     static public final OptimalCategory SkillsCat = new OptimalCategory(Category.SKILLS, new ActivityDuration(42, 0), new ActivityDuration(14, 0));
@@ -78,11 +78,17 @@ public class KnowledgeBase {
 
     static public ActivityDuration getCategoryOptimalMaxDuration(String name){
         return optimalCategories.get(optimalCategoryList.indexOf(name)).getMaxDuration();
-
     }
 
     static public ActivityDuration getActivityOptimalMinDuration(String name){
         return optimalCategories.get(optimalCategoryList.indexOf(name)).getMinDuration();
+    }
+
+    static public void createCourseActivity(Course course){
+        Educational.add(course.getName());
+        OptimalActivity courseActivity = new OptimalActivity(Category.EDUCATIONAL, course.getName(), Course.calculateAllCourseHours(course), Course.calculateAllCourseHours(course), OptimalActivity.Priority.MANDATORY);
+        EducationalCat.setMaxDuration(ActivityDuration.addTwoDurations(EducationalCat.getMaxDuration(), courseActivity.getMaxDuration()));
+        EducationalCat.setMinDuration(ActivityDuration.addTwoDurations(EducationalCat.getMinDuration(), courseActivity.getMinDuration()));
     }
 
 }
