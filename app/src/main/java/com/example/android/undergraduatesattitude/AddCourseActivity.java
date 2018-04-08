@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class AddCourseActivity extends AppCompatActivity {
 
 
@@ -16,6 +18,17 @@ public class AddCourseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course);
+
+        Spinner difficultySpinner = (Spinner) findViewById(R.id.difficulty_spinner);
+
+        ArrayList<String> difficultySpinnerList = new ArrayList<>();
+        difficultySpinnerList.add("Anticipate Difficulty Level");
+        difficultySpinnerList.add("EASY");
+        difficultySpinnerList.add("MEDIUM");
+        difficultySpinnerList.add("DIFFICULT");
+        ArrayAdapter<String> difficultyAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, difficultySpinnerList);
+        difficultyAdapter.setDropDownViewResource(R.layout.spinner_item);
+        difficultySpinner.setAdapter(difficultyAdapter);
     }
 
     public void notifyCourseAdded(View view){
@@ -23,7 +36,7 @@ public class AddCourseActivity extends AppCompatActivity {
     }
 
     public void addCourse (User user) {
-        Spinner difficulty =findViewById(R.id.Difficulity);
+        Spinner difficulty =findViewById(R.id.difficulty_spinner);
         EditText name=findViewById(R.id.Name);
         EditText hours=findViewById(R.id.Hours);
         EditText minutes=findViewById(R.id.Minutes);
