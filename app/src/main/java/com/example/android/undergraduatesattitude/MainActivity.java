@@ -14,7 +14,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        File file = new File("user_file");
+        if(file.exists()){
+            try {
+                User.load(getApplicationContext());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            setContentView(R.layout.activity_sub_main);
+        }
+        else{
+            setContentView(R.layout.activity_main);
+        }
+
     }
 
     public void navigateToCreateProfile(View view){

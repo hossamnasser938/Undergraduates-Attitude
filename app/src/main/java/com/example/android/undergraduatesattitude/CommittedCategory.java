@@ -10,18 +10,19 @@ public class CommittedCategory extends OptimalCategory {
 
     private ActivityDuration committedDuration;
     private int percentage;
-    public ArrayList<CommittedActivity> committedActivities;
+    private ArrayList<CommittedActivity> committedActivities;
 
-    public CommittedCategory(Category category, ActivityDuration committedHours) {
+    public CommittedCategory(Category category, ActivityDuration committedDuration) {
         super(category);
         this.committedDuration = committedDuration;
-        this.setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.toString()));
-        this.setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.toString()));
+        setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.toString()));
+        setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.toString()));
+        setCommittedActivities(new ArrayList<CommittedActivity>());
 
-        committedActivities = new ArrayList<>();
+        committedActivities = new ArrayList<CommittedActivity>();
         for(OptimalActivity mandatoryActivity : KnowledgeBase.optimalActivities){
             if(mandatoryActivity.getPriority() == OptimalActivity.Priority.MANDATORY){
-                committedActivities.add(new CommittedActivity(mandatoryActivity.getCategory(), mandatoryActivity.getName(), new ActivityDuration(0, 0)));
+                getCommittedActivities().add(new CommittedActivity(mandatoryActivity.getCategory(), mandatoryActivity.getName(), new ActivityDuration(0, 0)));
             }
         }
     }
@@ -30,8 +31,16 @@ public class CommittedCategory extends OptimalCategory {
         return committedDuration;
     }
 
-    public void setCommittedHours(ActivityDuration committedDuration) {
+    public void setCommittedDuration(ActivityDuration committedDuration) {
         this.committedDuration = committedDuration;
+    }
+
+    public ArrayList<CommittedActivity> getCommittedActivities() {
+        return committedActivities;
+    }
+
+    public void setCommittedActivities(ArrayList<CommittedActivity> committedActivities) {
+        this.committedActivities = committedActivities;
     }
 
     public int getPercentage() {
@@ -45,4 +54,5 @@ public class CommittedCategory extends OptimalCategory {
         double optimalAverageHours = (optimalMaxHours + optimalMinHours) / 2;
         this.percentage = (int) (committedHours / optimalAverageHours);
     }
+
 }

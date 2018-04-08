@@ -14,6 +14,12 @@ public class Report{
     private ArrayList<CommittedActivity> committedActivities;
     private ArrayList<CommittedCategory> committedCategories;
     private double overallPercentage;
+
+    public Report(){
+        committedActivities = new ArrayList<CommittedActivity>();
+        committedCategories = new ArrayList<CommittedCategory>();
+    }
+
     public static int getWeekHours() {
         return WEEK_HOURS;
     }

@@ -12,7 +12,6 @@ public class CommittedActivity extends OptimalActivity {
     public CommittedActivity(Category category, String name, ActivityDuration committedDuration) {
         super(category, name, KnowledgeBase.getActivityOptimalMaxDuration(name), KnowledgeBase.getActivityOptimalMinDuration(name), KnowledgeBase.getActivityPriority(name));
         this.setDuration(committedDuration);
-
     }
 
 

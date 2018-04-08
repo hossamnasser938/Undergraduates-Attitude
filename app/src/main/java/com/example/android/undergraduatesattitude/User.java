@@ -24,6 +24,12 @@ public class User implements Serializable {
     public ArrayList<Week> weeks;
     static public User user = new User();
 
+    public User(){
+        courses = new ArrayList<Course>();
+        weeks = new ArrayList<Week>();
+        weeks.add(new Week());
+    }
+
     public ArrayList<Course> getCourses() {
         return courses;
     }
@@ -33,7 +39,7 @@ public class User implements Serializable {
     }
 
     public Week getWeek() {
-        return weeks.get(weeks.size());
+        return weeks.get(Week.getNum());
     }
 
     public int getAcademicYear() {

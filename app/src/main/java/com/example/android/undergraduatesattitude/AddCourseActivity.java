@@ -47,7 +47,7 @@ public class AddCourseActivity extends AppCompatActivity {
 
         Course.Difficulty difficulty1 = Course.Difficulty.valueOf(difficulty.getSelectedItem().toString());
 
-        Course c = new Course(name.getText().toString(), new ActivityDuration(Integer.parseInt(hours.toString()), Integer.parseInt(minutes.toString())), difficulty1, assignments.isChecked(), finalProject.isChecked());
+        Course c = new Course(name.getText().toString(), new ActivityDuration(Integer.parseInt(hours.getText().toString()), Integer.parseInt(minutes.getText().toString())), difficulty1, assignments.isChecked(), finalProject.isChecked());
         User.user.getCourses().add(c);
         KnowledgeBase.createCourseActivity(c);
 

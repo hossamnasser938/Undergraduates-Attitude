@@ -17,7 +17,7 @@ public class ReportActivity extends AppCompatActivity {
 
         ArrayList<ArrayList<CommittedActivity>> committedActivitiesArrayLists = new ArrayList<ArrayList<CommittedActivity>>();
         for(int i = 0; i < report.getCommittedCategories().size() ; i++){
-            committedActivitiesArrayLists.add(report.getCommittedCategories().get(i).committedActivities);
+            committedActivitiesArrayLists.add(report.getCommittedCategories().get(i).getCommittedActivities());
         }
 
         CategoryAdapter adapter = new CategoryAdapter(getApplicationContext(), report.getCommittedCategories(), committedActivitiesArrayLists);
