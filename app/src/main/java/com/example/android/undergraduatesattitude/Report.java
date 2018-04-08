@@ -12,8 +12,8 @@ public class Report{
     private boolean overflowed;
     private int allOverflowedHours;
     private ArrayList<CommittedActivity> committedActivities;
-    private ArrayList<CommittedCategory> committedCategory;
-private double overallPercentage;
+    private ArrayList<CommittedCategory> committedCategories;
+    private double overallPercentage;
     public static int getWeekHours() {
         return WEEK_HOURS;
     }
@@ -58,12 +58,12 @@ private double overallPercentage;
         this.committedActivities = committedActivities;
     }
 
-    public ArrayList<CommittedCategory> getCommittedCategory() {
-        return committedCategory;
+    public ArrayList<CommittedCategory> getCommittedCategories() {
+        return committedCategories;
     }
 
-    public void setCommittedCategory(ArrayList<CommittedCategory> committedCategory) {
-        this.committedCategory = committedCategory;
+    public void setCommittedCategories(ArrayList<CommittedCategory> committedCategories) {
+        this.committedCategories = committedCategories;
     }
     public double calculateOverallPercentage(){
         int h=0;

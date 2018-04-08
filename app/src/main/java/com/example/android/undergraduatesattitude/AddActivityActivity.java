@@ -24,22 +24,28 @@ public class AddActivityActivity extends AppCompatActivity {
         Spinner task=findViewById(R.id.Task);
         EditText h=findViewById(R.id.Hours);
         EditText m=findViewById(R.id.Minutes);
+
+        Category category1 = Category.valueOf(category.getSelectedItem().toString());
+
         ActivityDuration d=new ActivityDuration(Integer.parseInt(h.getText().toString()),Integer.parseInt(m.getText().toString()));
-        Activity activity=new Activity(task.getSelectedItem().toString(),category.getSelectedItem(),d);
+
+        CommittedActivity activity = new CommittedActivity(category1, task.getSelectedItem().toString());
+
         int i=0;
         boolean found=false;
-        for(Activity a:user.getWeeks().get(Week.getNum()).getActivities())
+        for(Activity a:User.user.getWeek().getActivities())
         {
             if(a.getName().equals(activity.getName())) {
-            user.getWeeks().get(Week.getNum()).getActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours()+activity.getDuration().getHours(),a.getDuration().getMinutes()+activity.getDuration().getMinutes()));
-        found=true;
+            user.getWeek().getActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours()+activity.getDuration().getHours(),a.getDuration().getMinutes()+activity.getDuration().getMinutes()));
+            found=true;
             }
             i++;
-}
-if(!found)
-    user.getWeeks().get(Week.getNum()).getActivities().add(activity);
-    if(!user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().contains(activity.getCategory()))
-        user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().add(activity.getCategory());
+        }
+    if(!found)
+        user.getWeek().getActivities().add(activity);
+        //ToDo: Add an object of CommittedCategory
+    if(!user.getWeek().getReport().getCommittedCategories().contains(activity.getCategory()))
+        user.getWeek().getReport().getCommittedCategories().add(activity.getCategory());
     }
 
 
