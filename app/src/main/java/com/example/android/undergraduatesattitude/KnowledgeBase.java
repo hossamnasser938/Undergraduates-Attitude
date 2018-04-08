@@ -57,15 +57,16 @@ public class KnowledgeBase {
     static public final OptimalCategory SkillsCat = new OptimalCategory(Category.SKILLS, new ActivityDuration(42, 0), new ActivityDuration(14, 0));
            /*****************************************************/    
     
-    static public final ArrayList<String> optimalCategoryList = new ArrayList<>(Arrays.asList("HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
-    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
+    static public final ArrayList<String> optimalCategoryList = new ArrayList<>(Arrays.asList("EDUCATIONAL","HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
+    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(EducationalCat,HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
     
     //=====================================================================================================
     
     
-    static public final ArrayList<String> optimalActivityList = new ArrayList<>(Arrays.asList("Sleeping","Sports","HouseHold","Eating and Drinking", "Purchasing goods and services","Transportation","Religious and Spiritual Activities", "Planning","Volunteerism","Socializing and communicating","Telephone calls and E-mails", "Hobby","Social Media","Leisure","Language Acquisition","Teaching","Writing","Reading"));
-    static public final ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation, religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneCallsAndEMails, hobby, socialMedia, leisure, languageAcquisition, teaching, writing, reading));
+    static public ArrayList<String> optimalActivityList = new ArrayList<>(Arrays.asList("Sleeping","Sports","HouseHold","Eating and Drinking", "Purchasing goods and services","Transportation","Religious and Spiritual Activities", "Planning","Volunteerism","Socializing and communicating","Telephone calls and E-mails", "Hobby","Social Media","Leisure","Language Acquisition","Teaching","Writing","Reading"));
+    static public ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation, religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneCallsAndEMails, hobby, socialMedia, leisure, languageAcquisition, teaching, writing, reading));
 
+    static public ArrayList<String> courseActivities = new ArrayList<>(Arrays.asList("Attendance", "Homework", "Assignments", "Final Project"));
 
     static public ActivityDuration getActivityOptimalMaxDuration(String name){
         return optimalActivities.get(optimalActivityList.indexOf(name)).getMaxDuration();
@@ -89,6 +90,8 @@ public class KnowledgeBase {
         OptimalActivity courseActivity = new OptimalActivity(Category.EDUCATIONAL, course.getName(), Course.calculateAllCourseHours(course), Course.calculateAllCourseHours(course), OptimalActivity.Priority.MANDATORY);
         EducationalCat.setMaxDuration(ActivityDuration.addTwoDurations(EducationalCat.getMaxDuration(), courseActivity.getMaxDuration()));
         EducationalCat.setMinDuration(ActivityDuration.addTwoDurations(EducationalCat.getMinDuration(), courseActivity.getMinDuration()));
+        optimalActivityList.add(course.getName());
+        optimalActivities.add(courseActivity);
     }
 
 }

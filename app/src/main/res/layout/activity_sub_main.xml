@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.undergraduatesattitude.SubMainActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            style="@style/sub_main_relative">
+
+            <Button
+                style="@style/sub_main_button"
+                android:text="@string/add_semedter_courses"
+                android:onClick="navigateToAddCourseActivity"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/sub_main_relative">
+
+            <Button
+                style="@style/sub_main_button"
+                android:text="@string/add_activities"
+                android:onClick="navigateToAddActivityActivity"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/sub_main_relative">
+
+            <Button
+                style="@style/sub_main_button"
+                android:text="@string/get_current_week_report"
+                android:onClick="navigateToReportActivity"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/sub_main_relative">
+
+            <Button
+                style="@style/sub_main_button"
+                android:text="@string/compare_current_vs_previous"
+                android:onClick="navigateToCompare"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/sub_main_relative">
+
+            <Button
+                style="@style/sub_main_button"
+                android:text="@string/show_previous_weeks_report"
+                android:onClick="navigateToShow"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+</LinearLayout>

@@ -17,7 +17,13 @@ public class CommittedCategory extends OptimalCategory {
         this.committedDuration = committedDuration;
         this.setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.toString()));
         this.setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.toString()));
+
         committedActivities = new ArrayList<>();
+        for(OptimalActivity mandatoryActivity : KnowledgeBase.optimalActivities){
+            if(mandatoryActivity.getPriority() == OptimalActivity.Priority.MANDATORY){
+                committedActivities.add(new CommittedActivity(mandatoryActivity.getCategory(), mandatoryActivity.getName(), new ActivityDuration(0, 0), OptimalActivity.Priority.MANDATORY));
+            }
+        }
     }
 
     public ActivityDuration getCommittedDuration() {

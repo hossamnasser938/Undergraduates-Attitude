@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigateToCreateProfile(View view){
-        Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
+        Intent intent = new Intent(getApplicationContext() , CreateProfileActivity.class);
         startActivity(intent);
     }
 

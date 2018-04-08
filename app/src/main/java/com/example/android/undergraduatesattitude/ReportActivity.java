@@ -13,12 +13,14 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+        Report report = User.user.getWeek().getReport();
+
         ArrayList<ArrayList<CommittedActivity>> committedActivitiesArrayLists = new ArrayList<ArrayList<CommittedActivity>>();
-        for(int i = 0; i < report.committedCategories.size() ; i++){
-            committedActivitiesArrayLists.add(report.committedCategories.get(i).committedActivities);
+        for(int i = 0; i < report.getCommittedCategories().size() ; i++){
+            committedActivitiesArrayLists.add(report.getCommittedCategories().get(i).committedActivities);
         }
 
-        CategoryAdapter adapter = new CategoryAdapter(getApplicationContext(), report.committedCategories, committedActivitiesArrayLists);
+        CategoryAdapter adapter = new CategoryAdapter(getApplicationContext(), report.getCommittedCategories(), committedActivitiesArrayLists);
 
         ListView categoriesList = findViewById(R.id.categories_list);
         categoriesList.setAdapter(adapter);

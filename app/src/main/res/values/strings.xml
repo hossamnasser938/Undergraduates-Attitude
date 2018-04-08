@@ -4,7 +4,9 @@
     <string name="create_profile">Create Profile</string>
     <string name="add">Add</string>
     <string name="add_course">Add Course</string>
+    <string name="add_semedter_courses">Add Semester Courses</string>
     <string name="add_activity">Add Activity</string>
+    <string name="add_activities">Add Activities</string>
     <string name="report">Report</string>
     <string name="main">Main</string>
     <string name="create">Create</string>
@@ -16,4 +18,7 @@
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="activity_added_successfully">Activity Added Successfully</string>
+    <string name="get_current_week_report">Get Current Week Report</string>
+    <string name="compare_current_vs_previous">Compare Current VS Previous</string>
+    <string name="show_previous_weeks_report">Show Previous Weeks Reports</string>
 </resources>

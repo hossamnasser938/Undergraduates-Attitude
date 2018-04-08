@@ -7,7 +7,6 @@ package com.example.android.undergraduatesattitude;
  */
 public class Course {
 
-    private Category category;
     private String name;
     private ActivityDuration attendanceHours;
     private boolean assignments;
@@ -21,8 +20,7 @@ public class Course {
 
     private Difficulty difficulty;
 
-    public Course(Category category, String name, ActivityDuration atendanceHours, Difficulty difficulty, boolean assignments, boolean finalProject) {
-        this.category = category;
+    public Course(String name, ActivityDuration atendanceHours, Difficulty difficulty, boolean assignments, boolean finalProject) {
         this.name = name;
         this.attendanceHours = atendanceHours;
         this.difficulty = difficulty; //error 

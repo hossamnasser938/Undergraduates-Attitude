@@ -15,12 +15,14 @@ import java.util.ArrayList;
  */
 
 public class User implements Serializable{
+
     private String name;
     private String college;
     private int academicYear;
     private String department;
     public ArrayList<Course> courses;
     public ArrayList<Week> weeks;
+    static public User user = new User();
 
     public ArrayList<Course> getCourses() {
         return courses;
@@ -30,12 +32,8 @@ public class User implements Serializable{
         this.courses = courses;
     }
 
-    public ArrayList<Week> getWeeks() {
-        return weeks;
-    }
-
-    public void setWeeks(ArrayList<Week> weeks) {
-        this.weeks = weeks;
+    public Week getWeek() {
+        return weeks.get(weeks.size());
     }
 
     public int getAcademicYear() {
@@ -69,20 +67,21 @@ public class User implements Serializable{
     public void setDepartment(String department) {
         this.department = department;
     }
-public void save() throws IOException {
 
-    FileOutputStream fos = context.openFileOutput(this.name, Context.MODE_PRIVATE);
-    ObjectOutputStream os = new ObjectOutputStream(fos);
-    os.writeObject(this);
-    os.close();
-    fos.close();
-}
-public static User load(String name) throws IOException, ClassNotFoundException {
-    FileInputStream fis = context.openFileInput(name);
-    ObjectInputStream is = new ObjectInputStream(fis);
-    User user = (User) is.readObject();
-    is.close();
-    fis.close();
-    return user;
-}
+    public void save(Context context) throws IOException {
+        FileOutputStream fos = context.openFileOutput(this.name, Context.MODE_PRIVATE);
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+        os.writeObject(this);
+        os.close();
+        fos.close();
+    }
+
+    public static User load(Context context, String name) throws IOException, ClassNotFoundException {
+        FileInputStream fis = context.openFileInput(name);
+        ObjectInputStream is = new ObjectInputStream(fis);
+        User user = (User) is.readObject();
+        is.close();
+        fis.close();
+        return user;
+    }
 }
