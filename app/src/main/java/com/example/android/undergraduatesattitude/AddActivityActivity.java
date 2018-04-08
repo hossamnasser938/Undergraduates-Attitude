@@ -89,34 +89,37 @@ public class AddActivityActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
     }
 
-    public void addActivity (User user) {
-        Spinner category=findViewById(R.id.category_spinner);
-        Spinner task=findViewById(R.id.activity_spinner);
-        EditText h=findViewById(R.id.Hours);
-        EditText m=findViewById(R.id.Minutes);
-
-        Category category1 = Category.valueOf(category.getSelectedItem().toString());
-
-        ActivityDuration d=new ActivityDuration(Integer.parseInt(h.getText().toString()),Integer.parseInt(m.getText().toString()));
-
-        CommittedActivity activity = new CommittedActivity(category1, task.getSelectedItem().toString(),d,  OptimalActivity.Priority.MANDATORY);
-
-        int i=0;
-        boolean found=false;
-        for(Activity a:User.user.getWeek().getActivities())
-        {
-            if(a.getName().equals(activity.getName())) {
-            user.getWeek().getActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours()+activity.getDuration().getHours(),a.getDuration().getMinutes()+activity.getDuration().getMinutes()));
-            found=true;
+    public void addActivity(User user) {
+        Spinner category = findViewById(R.id.Category);
+        Spinner task = findViewById(R.id.Task);
+        EditText h = findViewById(R.id.Hours);
+        EditText m = findViewById(R.id.Minutes);
+        ActivityDuration d = new ActivityDuration(Integer.parseInt(h.getText().toString()), Integer.parseInt(m.getText().toString()));
+        Activity activity = new Activity(task.getSelectedItem().toString(), category.getSelectedItem(), d);
+        int i = 0;
+        boolean found = false;
+        for (Activity a : user.getWeeks().get(Week.getNum()).getActivities()) {
+            if (a.getName().equals(activity.getName())) {
+                user.getWeeks().get(Week.getNum()).getActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours() + activity.getDuration().getHours(), a.getDuration().getMinutes() + activity.getDuration().getMinutes()));
+                found = true;
             }
             i++;
         }
-        if(!found)
-            user.getWeek().getActivities().add(activity);
-            //ToDo: Add an object of CommittedCategory
-        //if(!user.getWeek().getReport().getCommittedCategories().contains(activity.getCategory()))
-            //user.getWeek().getReport().getCommittedCategories().add(activity.getCategory());
+        if (!found)
+            user.getWeeks().get(Week.getNum()).getActivities().add(activity);
+        i = 0;
+        found = false;
+        for (CommittedCategory c : user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory()) {
+            if (c.getCategory().equals(activity.getCategory())) {
+                c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + activity.getDuration().getHours());
+                c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + activity.getDuration().getMinutes());
+                found = true;
+            }
+        }
+        if (!found) {
+            user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().add(new CommittedCategory(activity.getCategory(), activity.getDuration()));
+        int size= user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().size();
+            user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().get(size-1).committedActivities.add(activity);
+        }
     }
-
-
 }
