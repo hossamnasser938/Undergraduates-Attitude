@@ -85,6 +85,15 @@ public class KnowledgeBase {
         return optimalCategories.get(optimalCategoryList.indexOf(name)).getMinDuration();
     }
 
+    public static OptimalActivity.Priority getActivityPriority(String activityName){
+        for(OptimalActivity activity : optimalActivities){
+            if(activity.getName().equals(activityName)){
+                return activity.getPriority();
+            }
+        }
+        return OptimalActivity.Priority.OPTIONAL;
+    }
+
     static public void createCourseActivity(Course course){
         Educational.add(course.getName());
         OptimalActivity courseActivity = new OptimalActivity(Category.EDUCATIONAL, course.getName(), Course.calculateAllCourseHours(course), Course.calculateAllCourseHours(course), OptimalActivity.Priority.MANDATORY);

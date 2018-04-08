@@ -90,36 +90,36 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     public void addActivity(User user) {
-        Spinner category = findViewById(R.id.Category);
-        Spinner task = findViewById(R.id.Task);
+        Spinner activityCategory = findViewById(R.id.category_spinner);
+        Spinner activityName = findViewById(R.id.activity_spinner);
         EditText h = findViewById(R.id.Hours);
         EditText m = findViewById(R.id.Minutes);
         ActivityDuration d = new ActivityDuration(Integer.parseInt(h.getText().toString()), Integer.parseInt(m.getText().toString()));
-        Activity activity = new Activity(task.getSelectedItem().toString(), category.getSelectedItem(), d);
+        CommittedActivity committedActivity = new CommittedActivity(Category.valueOf(activityCategory.getSelectedItem().toString()), activityName.getSelectedItem().toString(), d);
         int i = 0;
         boolean found = false;
-        for (Activity a : user.getWeeks().get(Week.getNum()).getActivities()) {
-            if (a.getName().equals(activity.getName())) {
-                user.getWeeks().get(Week.getNum()).getActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours() + activity.getDuration().getHours(), a.getDuration().getMinutes() + activity.getDuration().getMinutes()));
+        for (CommittedActivity a : User.user.getWeek().getReport().getCommittedActivities()) {
+            if (a.getName().equals(committedActivity.getName())) {
+                User.user.getWeek().getReport().getCommittedActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours() + committedActivity.getDuration().getHours(), a.getDuration().getMinutes() + committedActivity.getDuration().getMinutes()));
                 found = true;
             }
             i++;
         }
         if (!found)
-            user.getWeeks().get(Week.getNum()).getActivities().add(activity);
+            User.user.getWeek().getReport().getCommittedActivities().add(committedActivity);
         i = 0;
         found = false;
-        for (CommittedCategory c : user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory()) {
-            if (c.getCategory().equals(activity.getCategory())) {
-                c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + activity.getDuration().getHours());
-                c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + activity.getDuration().getMinutes());
+        for (CommittedCategory c : User.user.getWeek().getReport().getCommittedCategories()) {
+            if (c.getCategory().equals(committedActivity.getCategory())) {
+                c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + committedActivity.getDuration().getHours());
+                c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + committedActivity.getDuration().getMinutes());
                 found = true;
             }
         }
         if (!found) {
-            user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().add(new CommittedCategory(activity.getCategory(), activity.getDuration()));
-        int size= user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().size();
-            user.getWeeks().get(Week.getNum()).getReport().getCommittedCategory().get(size-1).committedActivities.add(activity);
+            User.user.getWeek().getReport().getCommittedCategories().add(new CommittedCategory(committedActivity.getCategory(), committedActivity.getDuration()));
+        int size= User.user.getWeek().getReport().getCommittedCategories().size();
+            User.user.getWeek().getReport().getCommittedCategories().get(size-1).committedActivities.add(committedActivity);
         }
     }
 }

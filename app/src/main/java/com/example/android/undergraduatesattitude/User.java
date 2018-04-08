@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class User implements Serializable{
 
+    static public int test = 0;
     private String name;
     private String college;
     private int academicYear;

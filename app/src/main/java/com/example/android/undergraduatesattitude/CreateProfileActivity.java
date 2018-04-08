@@ -22,13 +22,12 @@ public class CreateProfileActivity extends AppCompatActivity {
         EditText department = findViewById(R.id.Department);
         EditText college = findViewById(R.id.College);
         EditText academicYear = findViewById(R.id.Academic_Year);
-        User user = new User();
-        user.setName(name.getText().toString());
-        user.setCollege(college.getText().toString());
-        user.setDepartment(department.getText().toString());
-        user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
+        User.user.setName(name.getText().toString());
+        User.user.setCollege(college.getText().toString());
+        User.user.setDepartment(department.getText().toString());
+        User.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
         try {
-            user.save(getApplicationContext());
+            User.user.save(getApplicationContext());
         } catch (IOException e) {
             e.printStackTrace();
         }

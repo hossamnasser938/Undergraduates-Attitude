@@ -9,8 +9,8 @@ public class CommittedActivity extends OptimalActivity {
 
     private String advice;
 
-    public CommittedActivity(Category category, String name, ActivityDuration committedDuration, Priority priority) {
-        super(category, name, KnowledgeBase.getActivityOptimalMaxDuration(name), KnowledgeBase.getActivityOptimalMinDuration(name), priority);
+    public CommittedActivity(Category category, String name, ActivityDuration committedDuration) {
+        super(category, name, KnowledgeBase.getActivityOptimalMaxDuration(name), KnowledgeBase.getActivityOptimalMinDuration(name), KnowledgeBase.getActivityPriority(name));
         this.setDuration(committedDuration);
 
     }
