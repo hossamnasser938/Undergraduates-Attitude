@@ -10,16 +10,44 @@ import java.util.Date;
  */
 public class Week {
 
+    private static int num=-1;
+    private int wNum;
     private Date startDate;
     private Date endDate;
-    ArrayList<Activity> activity = new ArrayList<Activity>();
-    //Report report = new Report();
+    ArrayList<Activity> activities = new ArrayList<>();
+    private Report report;
+
+    public Week() {
+        report = new Report();
+        num++;
+        wNum=num;
+    }
 
     /**
      * @return the startDate
      */
     public Date getStartDate() {
         return startDate;
+    }
+
+    public int getwNum() {
+        return wNum;
+    }
+
+    public void setwNum(int wNum) {
+        this.wNum = wNum;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(ArrayList<Activity> activities) {
+        this.activities = activities;
+    }
+
+    public static int getNum() {
+        return num;
     }
 
     /**
@@ -43,8 +71,8 @@ public class Week {
         this.endDate = endDate;
     }
 
-    /*public Report getReport() {
+    public Report getReport() {
         return report;
-    }*/
+    }
 
 }
