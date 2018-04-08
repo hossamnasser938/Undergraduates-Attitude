@@ -63,8 +63,8 @@ public class KnowledgeBase {
     //=====================================================================================================
     
     
-    static public final ArrayList<String> optimalActivityList = new ArrayList<>(Arrays.asList("Sleeping","Sports","HouseHold","Eating and Drinking", "Purchasing goods and services","Transportation","Religious and Spiritual Activities", "Planning","Volunteerism","Socializing and communicating","Telephone calls and E-mails", "Hobby","Social Media","Leisure","Language Acquisition","Teaching","Writing","Reading"));
-    static public final ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation, religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneCallsAndEMails, hobby, socialMedia, leisure, languageAcquisition, teaching, writing, reading));
+    static public ArrayList<String> optimalActivityList = new ArrayList<>(Arrays.asList("Sleeping","Sports","HouseHold","Eating and Drinking", "Purchasing goods and services","Transportation","Religious and Spiritual Activities", "Planning","Volunteerism","Socializing and communicating","Telephone calls and E-mails", "Hobby","Social Media","Leisure","Language Acquisition","Teaching","Writing","Reading"));
+    static public ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation, religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneCallsAndEMails, hobby, socialMedia, leisure, languageAcquisition, teaching, writing, reading));
 
 
     static public ActivityDuration getActivityOptimalMaxDuration(String name){
@@ -89,6 +89,8 @@ public class KnowledgeBase {
         OptimalActivity courseActivity = new OptimalActivity(Category.EDUCATIONAL, course.getName(), Course.calculateAllCourseHours(course), Course.calculateAllCourseHours(course), OptimalActivity.Priority.MANDATORY);
         EducationalCat.setMaxDuration(ActivityDuration.addTwoDurations(EducationalCat.getMaxDuration(), courseActivity.getMaxDuration()));
         EducationalCat.setMinDuration(ActivityDuration.addTwoDurations(EducationalCat.getMinDuration(), courseActivity.getMinDuration()));
+        optimalActivityList.add(course.getName());
+        optimalActivities.add(courseActivity);
     }
 
 }
