@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddCourseActivity extends AppCompatActivity {
@@ -32,10 +33,11 @@ public class AddCourseActivity extends AppCompatActivity {
     }
 
     public void notifyCourseAdded(View view){
+        addCourse();
         Toast.makeText(getApplicationContext(), "Course Added", Toast.LENGTH_LONG).show();
     }
 
-    public void addCourse (User user) {
+    public void addCourse () {
         Spinner difficulty =findViewById(R.id.difficulty_spinner);
         EditText name=findViewById(R.id.Name);
         EditText hours=findViewById(R.id.Hours);
@@ -46,7 +48,14 @@ public class AddCourseActivity extends AppCompatActivity {
         Course.Difficulty difficulty1 = Course.Difficulty.valueOf(difficulty.getSelectedItem().toString());
 
         Course c = new Course(name.getText().toString(), new ActivityDuration(Integer.parseInt(hours.toString()), Integer.parseInt(minutes.toString())), difficulty1, assignments.isChecked(), finalProject.isChecked());
-        user.getCourses().add(c);
+        User.user.getCourses().add(c);
+        KnowledgeBase.createCourseActivity(c);
+
+        try {
+            User.user.save(getApplicationContext());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

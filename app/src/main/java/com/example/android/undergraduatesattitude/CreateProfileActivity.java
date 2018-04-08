@@ -34,6 +34,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
 
     public void navigateToSubMainLayout(View view){
+        signUpUser();
         Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
         startActivity(intent);
     }

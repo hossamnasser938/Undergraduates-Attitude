@@ -86,10 +86,11 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     public void notifyActivityAdded(View view){
+        addActivity();
         Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
     }
 
-    public void addActivity(User user) {
+    public void addActivity() {
         Spinner activityCategory = findViewById(R.id.category_spinner);
         Spinner activityName = findViewById(R.id.activity_spinner);
         EditText h = findViewById(R.id.Hours);
