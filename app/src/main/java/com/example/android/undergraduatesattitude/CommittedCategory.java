@@ -1,5 +1,7 @@
 package com.example.android.undergraduatesattitude;
 
+import java.util.ArrayList;
+
 /**
  * Created by Hosam on 4/7/2018.
  */
@@ -8,12 +10,14 @@ public class CommittedCategory extends OptimalCategory {
 
     private ActivityDuration committedDuration;
     private int percentage;
+    public ArrayList<CommittedActivity> committedActivities;
 
     public CommittedCategory(Category category, ActivityDuration committedHours) {
         super(category);
         this.committedDuration = committedDuration;
         this.setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.toString()));
         this.setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.toString()));
+        committedActivities = new ArrayList<>();
     }
 
     public ActivityDuration getCommittedDuration() {

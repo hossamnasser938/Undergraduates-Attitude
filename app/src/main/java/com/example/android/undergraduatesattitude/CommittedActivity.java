@@ -31,12 +31,12 @@ public class CommittedActivity extends OptimalActivity {
         return advice;
     }
 
-    public void generateAdice(ActivityDuration committedDuration, Priority priority, ActivityDuration max, ActivityDuration min) {
+    public void generateAdice() {
         String Advice = null;
-        double CommittedDuration = committedDuration.getHours() + ((committedDuration.getMinutes()) / 60);
-        double maxDuration = max.getHours() + ((max.getMinutes()) / 60);
-        double minDuration = min.getHours() + ((min.getMinutes()) / 60);
-        switch (priority) {
+        double CommittedDuration = this.getCommittedDuration().getHours() + ((this.getCommittedDuration().getMinutes()) / 60);
+        double maxDuration = this.getMaxDuration().getHours() + ((this.getMaxDuration().getMinutes()) / 60);
+        double minDuration = this.getMinDuration().getHours() + ((this.getMinDuration().getMinutes()) / 60);
+        switch (this.getPriority()) {
             case OPTIONAL:
                 if (CommittedDuration > maxDuration) {
                     Advice = "You Have more committed Duration in this Activity which the number of hours is : "+(CommittedDuration-maxDuration)+" Hrs";

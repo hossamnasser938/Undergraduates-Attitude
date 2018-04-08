@@ -15,9 +15,10 @@ public class Week {
     private Date startDate;
     private Date endDate;
     ArrayList<Activity> activities = new ArrayList<>();
-    Report report = new Report();
+    private Report report;
 
     public Week() {
+        report = new Report();
         num++;
         wNum=num;
     }
