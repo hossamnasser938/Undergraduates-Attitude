@@ -52,7 +52,8 @@
 
             <Button
                 style="@style/sub_main_button"
-                android:text="@string/compare_current_vs_previous"/>
+                android:text="@string/compare_current_vs_previous"
+                android:onClick="navigateToCompare"/>
 
         </RelativeLayout>
 
@@ -61,7 +62,8 @@
 
             <Button
                 style="@style/sub_main_button"
-                android:text="@string/show_previous_weeks_report"/>
+                android:text="@string/show_previous_weeks_report"
+                android:onClick="navigateToShow"/>
 
         </RelativeLayout>
 

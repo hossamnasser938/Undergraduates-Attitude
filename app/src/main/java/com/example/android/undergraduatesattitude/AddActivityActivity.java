@@ -15,10 +15,10 @@ public class AddActivityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_activity);
     }
 
-    private void notifyActivityAdded(View view){
-        Toast toast = Toast.makeText(getApplicationContext() , getResources().getString(R.string.activity_added_successfully) , Toast.LENGTH_SHORT);
-        toast.show();
+    public void notifyActivityAdded(View view){
+        Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
     }
+
     public void addActivity (User user) {
         Spinner category=findViewById(R.id.Category);
         Spinner task=findViewById(R.id.Task);
@@ -29,7 +29,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
         ActivityDuration d=new ActivityDuration(Integer.parseInt(h.getText().toString()),Integer.parseInt(m.getText().toString()));
 
-        CommittedActivity activity = new CommittedActivity(category1, task.getSelectedItem().toString());
+        CommittedActivity activity = new CommittedActivity(category1, task.getSelectedItem().toString(),d,  OptimalActivity.Priority.MANDATORY);
 
         int i=0;
         boolean found=false;
@@ -41,11 +41,11 @@ public class AddActivityActivity extends AppCompatActivity {
             }
             i++;
         }
-    if(!found)
-        user.getWeek().getActivities().add(activity);
-        //ToDo: Add an object of CommittedCategory
-    if(!user.getWeek().getReport().getCommittedCategories().contains(activity.getCategory()))
-        user.getWeek().getReport().getCommittedCategories().add(activity.getCategory());
+        if(!found)
+            user.getWeek().getActivities().add(activity);
+            //ToDo: Add an object of CommittedCategory
+        //if(!user.getWeek().getReport().getCommittedCategories().contains(activity.getCategory()))
+            //user.getWeek().getReport().getCommittedCategories().add(activity.getCategory());
     }
 
 
