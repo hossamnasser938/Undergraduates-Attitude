@@ -75,7 +75,7 @@ public class User implements Serializable {
     }
 
     public void save(Context context) throws IOException {
-        FileOutputStream fos = context.openFileOutput("user_file", Context.MODE_PRIVATE);
+        FileOutputStream fos = context.openFileOutput("user_file.ser", Context.MODE_PRIVATE);
         ObjectOutputStream os = new ObjectOutputStream(fos);
         os.writeObject(this);
         os.close();
@@ -83,7 +83,7 @@ public class User implements Serializable {
     }
 
     public static void load(Context context) throws IOException, ClassNotFoundException {
-        FileInputStream fis = context.openFileInput("user_file");
+        FileInputStream fis = context.openFileInput("user_file.ser");
         ObjectInputStream is = new ObjectInputStream(fis);
         User user = (User) is.readObject();
         is.close();

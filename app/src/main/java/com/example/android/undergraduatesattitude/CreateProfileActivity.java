@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -35,6 +36,7 @@ public class CreateProfileActivity extends AppCompatActivity {
 
     public void navigateToSubMainLayout(View view){
         signUpUser();
+        Toast.makeText(getApplicationContext(), "Profile Created", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
         startActivity(intent);
     }
