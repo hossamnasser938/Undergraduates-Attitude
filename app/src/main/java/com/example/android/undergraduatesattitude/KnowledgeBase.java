@@ -25,26 +25,25 @@ public class KnowledgeBase {
     static public final String[] skillsList = {"Language Acquisition", "Teaching", "Writing", "Reading"};
     static public final ArrayList<String> Skills = new ArrayList<>(Arrays.asList(skillsList));
 
-
     //===============================================================================================
     static public final OptimalActivity sleeping = new OptimalActivity(Category.HEALTH, "Sleeping", new ActivityDuration(56, 0), new ActivityDuration(42, 0), OptimalActivity.Priority.MANDATORY);
-    static public final OptimalActivity sports = new OptimalActivity(Category.HEALTH, "Sports", new ActivityDuration(7, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.RECOMMENDED);
+    static public final OptimalActivity sports = new OptimalActivity(Category.HEALTH, "Sports", new ActivityDuration(7, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
     static public final OptimalActivity houseHold = new OptimalActivity(Category.LIFE, "HouseHold", new ActivityDuration(14, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
     static public final OptimalActivity eatingAndDrinking = new OptimalActivity(Category.LIFE, "Eating and Drinking", new ActivityDuration(7, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.MANDATORY);
     static public final OptimalActivity purchasingGoodsAndServices = new OptimalActivity(Category.LIFE, "Purchasing goods and services", new ActivityDuration(3, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
     static public final OptimalActivity transportation = new OptimalActivity(Category.LIFE, "Transportation", new ActivityDuration(21, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
     static public final OptimalActivity religiousAndSpiritualActivities = new OptimalActivity(Category.LIFE, "Religious and Spiritual Activities", new ActivityDuration(28, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
-    static public final OptimalActivity planning = new OptimalActivity(Category.RESPONSIBILITY, "Planning", new ActivityDuration(2, 0), new ActivityDuration(1, 0), OptimalActivity.Priority.RECOMMENDED);
+    static public final OptimalActivity planning = new OptimalActivity(Category.RESPONSIBILITY, "Planning", new ActivityDuration(2, 0), new ActivityDuration(1, 0), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
     static public final OptimalActivity volunteerism = new OptimalActivity(Category.RESPONSIBILITY, "Volunteerism", new ActivityDuration(6, 0), new ActivityDuration(3, 0), OptimalActivity.Priority.RECOMMENDED);
     static public final OptimalActivity socializingAndCommunicating = new OptimalActivity(Category.RESPONSIBILITY, "Socializing and communicating", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.MANDATORY);
     static public final OptimalActivity telephoneCallsAndEMails = new OptimalActivity(Category.RESPONSIBILITY, "Telephone call and e-mails", new ActivityDuration(3, 0), new ActivityDuration(2, 0), OptimalActivity.Priority.RECOMMENDED);
     static public final OptimalActivity hobby = new OptimalActivity(Category.ENTERTAINMENT, "Hobby", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
     static public final OptimalActivity socialMedia = new OptimalActivity(Category.ENTERTAINMENT, "Social Media", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
     static public final OptimalActivity leisure = new OptimalActivity(Category.ENTERTAINMENT, "Leisure", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
-    static public final OptimalActivity languageAcquisition = new OptimalActivity(Category.SKILLS, "Language Acquisition", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.OPTIONAL);
+    static public final OptimalActivity languageAcquisition = new OptimalActivity(Category.SKILLS, "Language Acquisition", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
     static public final OptimalActivity teaching = new OptimalActivity(Category.SKILLS, "Teaching", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.OPTIONAL);
     static public final OptimalActivity writing = new OptimalActivity(Category.SKILLS, "Writing", new ActivityDuration(7, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
-    static public final OptimalActivity reading = new OptimalActivity(Category.SKILLS, "Reading", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
+    static public final OptimalActivity reading = new OptimalActivity(Category.SKILLS, "Reading", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
 
     //=====================================================================================
     
