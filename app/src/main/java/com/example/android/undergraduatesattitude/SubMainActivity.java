@@ -26,9 +26,8 @@ public class SubMainActivity extends AppCompatActivity {
     }
 
     public void navigateToReportActivity(View view){
-        Toast.makeText(getApplicationContext(), "Still waiting for work to complete", Toast.LENGTH_LONG).show();
-        //Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
+        startActivity(intent);
     }
 
     public void navigateToCompare(View view){

@@ -47,17 +47,16 @@ public class CategoryAdapter extends ArrayAdapter {
         ListView activitiesList = (ListView) view.findViewById(R.id.activities_list);
         ProgressBar categoryPercentage = (ProgressBar) view.findViewById(R.id.category_percentage);
 
-        committedCategory.calculatePercentage();
+        categoryName.setText(committedCategory.getCategory().toString());
 
         ActivityAdapter adapter = new ActivityAdapter(context, committedActivitiesArrayLists.get(position));
         activitiesList.setAdapter(adapter);
 
-        categoryName.setText(committedCategory.toString());
-        categoryPercentage.setMin(0);
-        categoryPercentage.setMax(100);
+        committedCategory.calculatePercentage();
+
+        categoryPercentage.setIndeterminate(false);
         categoryPercentage.setProgress(committedCategory.getPercentage());
 
         return view;
     }
-
 }

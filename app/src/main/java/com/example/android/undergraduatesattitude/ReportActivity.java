@@ -15,13 +15,12 @@ public class ReportActivity extends AppCompatActivity {
 
         Report report = User.user.getWeek().getReport();
 
-        ArrayList<ArrayList<CommittedActivity>> committedActivitiesArrayLists = new ArrayList<ArrayList<CommittedActivity>>();
+        ArrayList<ArrayList<CommittedActivity>> committedActivitiesArrayLists = new ArrayList<>();
         for(int i = 0; i < report.getCommittedCategories().size() ; i++){
             committedActivitiesArrayLists.add(report.getCommittedCategories().get(i).getCommittedActivities());
         }
 
         CategoryAdapter adapter = new CategoryAdapter(getApplicationContext(), report.getCommittedCategories(), committedActivitiesArrayLists);
-
         ListView categoriesList = findViewById(R.id.categories_list);
         categoriesList.setAdapter(adapter);
     }

@@ -71,7 +71,8 @@ public class Report{
     public void setCommittedCategories(ArrayList<CommittedCategory> committedCategories) {
         this.committedCategories = committedCategories;
     }
-    public double calculateOverallPercentage(){
+
+    public int calculateOverallPercentage(){
         int h=0;
         int m=0;
         double overall=0;
@@ -82,6 +83,6 @@ public class Report{
         h+=m/60;
         m=m%60;
         overall=h+(double)m/60;
-        return (overall/168)*100;
+        return (int) ((overall/168)*100);
     }
 }
