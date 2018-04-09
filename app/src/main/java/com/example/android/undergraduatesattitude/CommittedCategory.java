@@ -22,7 +22,7 @@ public class CommittedCategory extends OptimalCategory {
         committedActivities = new ArrayList<CommittedActivity>();
         for(OptimalActivity mandatoryActivity : KnowledgeBase.optimalActivities){
             if(mandatoryActivity.getCategory() == category && mandatoryActivity.getPriority() == OptimalActivity.Priority.MANDATORY){
-                getCommittedActivities().add(new CommittedActivity(mandatoryActivity.getCategory(), mandatoryActivity.getName(), new ActivityDuration(0, 0)));
+                committedActivities.add(new CommittedActivity(mandatoryActivity.getCategory(), mandatoryActivity.getName(), new ActivityDuration(0, 0)));
             }
         }
     }
@@ -44,10 +44,11 @@ public class CommittedCategory extends OptimalCategory {
     }
 
     public int getPercentage() {
+        calculatePercentage();
         return percentage;
     }
 
-    public void calculatePercentage() {
+    private void calculatePercentage() {
         double optimalMaxHours = this.getMaxDuration().getHours() + (double) this.getMaxDuration().getMinutes() / 60;
         double optimalMinHours = this.getMinDuration().getHours() + (double) this.getMinDuration().getMinutes() / 60;
         double committedHours = this.committedDuration.getHours() + (double) this.committedDuration.getMinutes() / 60;

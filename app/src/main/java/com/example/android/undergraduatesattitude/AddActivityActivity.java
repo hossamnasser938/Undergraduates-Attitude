@@ -98,22 +98,9 @@ public class AddActivityActivity extends AppCompatActivity {
         EditText m = findViewById(R.id.Minutes);
         ActivityDuration d = new ActivityDuration(Integer.parseInt(h.getText().toString()), Integer.parseInt(m.getText().toString()));
         CommittedActivity committedActivity = new CommittedActivity(Category.valueOf(activityCategory.getSelectedItem().toString()), activityName.getSelectedItem().toString(), d);
+
         int i = 0;
         boolean found = false;
-        for (CommittedActivity a : User.user.getWeek().getReport().getCommittedActivities()) {
-            if (a.getName().equals(committedActivity.getName())) {
-                User.user.getWeek().getReport().getCommittedActivities().get(i).setDuration(new ActivityDuration(a.getDuration().getHours() + committedActivity.getDuration().getHours(), a.getDuration().getMinutes() + committedActivity.getDuration().getMinutes()));
-                found = true;
-                break;
-            }
-            i++;
-        }
-        if (!found){
-            User.user.getWeek().getReport().getCommittedActivities().add(committedActivity);
-        }
-
-        i = 0;
-        found = false;
 
         for (CommittedCategory c : User.user.getWeek().getReport().getCommittedCategories()) {
             if (c.getCategory() == committedActivity.getCategory()) {

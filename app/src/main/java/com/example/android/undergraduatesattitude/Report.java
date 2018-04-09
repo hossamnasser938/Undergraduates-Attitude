@@ -11,13 +11,14 @@ public class Report{
     private int allRemainingHours;
     private boolean overflowed;
     private int allOverflowedHours;
-    private ArrayList<CommittedActivity> committedActivities;
     private ArrayList<CommittedCategory> committedCategories;
-    private double overallPercentage;
+    private int overallPercentage;
 
     public Report(){
-        committedActivities = new ArrayList<CommittedActivity>();
-        committedCategories = new ArrayList<CommittedCategory>();
+        committedCategories = new ArrayList<>();
+        for(OptimalCategory oc : KnowledgeBase.optimalCategories){
+            committedCategories.add(new CommittedCategory(oc.getCategory(), new ActivityDuration(0, 0)));
+        }
     }
 
     public static int getWeekHours() {
@@ -56,14 +57,6 @@ public class Report{
         this.allOverflowedHours = allOverflowedHours;
     }
 
-    public ArrayList<CommittedActivity> getCommittedActivities() {
-        return committedActivities;
-    }
-
-    public void setCommittedActivities(ArrayList<CommittedActivity> committedActivities) {
-        this.committedActivities = committedActivities;
-    }
-
     public ArrayList<CommittedCategory> getCommittedCategories() {
         return committedCategories;
     }
@@ -72,17 +65,18 @@ public class Report{
         this.committedCategories = committedCategories;
     }
 
-    public int calculateOverallPercentage(){
-        int h=0;
-        int m=0;
-        double overall=0;
-        for(CommittedActivity c:committedActivities) {
-            h += c.getCommittedDuration().getHours();
-            m += c.getCommittedDuration().getMinutes();
+    public int getOverallPercentage(){
+        calculateOverallPercentage();
+        return overallPercentage;
+    }
+
+    private void calculateOverallPercentage(){
+        int percentage = 0;
+        int i = 0;
+        for(CommittedCategory cc : getCommittedCategories()){
+            percentage += cc.getPercentage();
+            i++;
         }
-        h+=m/60;
-        m=m%60;
-        overall=h+(double)m/60;
-        return (int) ((overall/168)*100);
+        overallPercentage = percentage / i;
     }
 }
