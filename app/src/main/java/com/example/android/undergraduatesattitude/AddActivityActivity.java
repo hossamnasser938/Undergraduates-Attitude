@@ -108,18 +108,34 @@ public class AddActivityActivity extends AppCompatActivity {
             }
             i++;
         }
-        if (!found)
+        if (!found){
             User.user.getWeek().getReport().getCommittedActivities().add(committedActivity);
+        }
 
         i = 0;
         found = false;
 
         for (CommittedCategory c : User.user.getWeek().getReport().getCommittedCategories()) {
-            if (c.getCategory().equals(committedActivity.getCategory())) {
+            if (c.getCategory() == committedActivity.getCategory()) {
                 c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + committedActivity.getDuration().getHours());
                 c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + committedActivity.getDuration().getMinutes());
                 found = true;
-                break;
+
+                int j = 0;
+                boolean ffound = false;
+
+                for(CommittedActivity ca : c.getCommittedActivities()){
+                    if(ca.getName().equals(committedActivity.getName())){
+                        User.user.getWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
+                        ffound = true;
+                        break;
+                    }
+                    j++;
+                }
+
+                if(!ffound){
+                    User.user.getWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
+                }
             }
         }
         if (!found) {
