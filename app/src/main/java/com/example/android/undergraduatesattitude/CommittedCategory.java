@@ -21,7 +21,7 @@ public class CommittedCategory extends OptimalCategory {
 
         committedActivities = new ArrayList<CommittedActivity>();
         for(OptimalActivity mandatoryActivity : KnowledgeBase.optimalActivities){
-            if(mandatoryActivity.getCategory() == category && mandatoryActivity.getPriority() == OptimalActivity.Priority.MANDATORY){
+            if(mandatoryActivity.getCategory() == category && (mandatoryActivity.getPriority() == OptimalActivity.Priority.MANDATORY || mandatoryActivity.getPriority() == OptimalActivity.Priority.HIGHLY_RECOMMENDED)){
                 committedActivities.add(new CommittedActivity(mandatoryActivity.getCategory(), mandatoryActivity.getName(), new ActivityDuration(0, 0)));
             }
         }
