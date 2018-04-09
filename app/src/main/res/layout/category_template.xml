@@ -8,16 +8,19 @@
     <TextView
         android:id="@+id/category_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
-    <!-- Activity List -->
+    <!-- Activity List
     <ListView
         android:id="@+id/activities_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+    -->
 
-    <!-- Total Category Percentage -->
+
+    <!-- Total Category Percentage
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,5 +39,6 @@
             android:max="100"/>
 
     </LinearLayout>
+    -->
 
 </LinearLayout>

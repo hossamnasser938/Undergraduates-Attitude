@@ -27,10 +27,11 @@ public class CommittedActivity extends OptimalActivity {
      * @return the advice
      */
     public String getAdvice() {
+        generateAdice();
         return advice;
     }
 
-    public void generateAdice() {
+    private void generateAdice() {
         String Advice = null;
         double CommittedDuration = this.getCommittedDuration().getHours() + ((this.getCommittedDuration().getMinutes()) / 60);
         double maxDuration = this.getMaxDuration().getHours() + ((this.getMaxDuration().getMinutes()) / 60);
