@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * Created by Hosam on 3/28/2018.
  */
 
-public class User implements Serializable{
-
+public class User {
+private static final int id=1;
     private String name;
     private String college;
     private int academicYear;
@@ -68,20 +68,7 @@ public class User implements Serializable{
         this.department = department;
     }
 
-    public void save(Context context) throws IOException {
-        FileOutputStream fos = context.openFileOutput(this.name, Context.MODE_PRIVATE);
-        ObjectOutputStream os = new ObjectOutputStream(fos);
-        os.writeObject(this);
-        os.close();
-        fos.close();
-    }
-
-    public static User load(Context context, String name) throws IOException, ClassNotFoundException {
-        FileInputStream fis = context.openFileInput(name);
-        ObjectInputStream is = new ObjectInputStream(fis);
-        User user = (User) is.readObject();
-        is.close();
-        fis.close();
-        return user;
+    public static int getId() {
+        return id;
     }
 }
