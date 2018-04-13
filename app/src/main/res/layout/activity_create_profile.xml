@@ -39,14 +39,15 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:hint="@string/department"
-            android:inputType="number"/>
+            android:inputType="textCapWords"/>
 
         <EditText
             android:id="@+id/Academic_Year"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:hint="@string/academic_year"/>
+            android:hint="@string/academic_year"
+            android:inputType="number"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

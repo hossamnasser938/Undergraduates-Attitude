@@ -37,6 +37,7 @@ public class OptimalActivity extends Activity {
     enum Priority {
         OPTIONAL ,
         RECOMMENDED ,
+        HIGHLY_RECOMMENDED,
         MANDATORY ,
     };
 

@@ -15,7 +15,8 @@ import java.util.ArrayList;
  */
 
 public class User {
-private static final int id=1;
+
+    private static final int id=1;
     private String name;
     private String college;
     private int academicYear;
@@ -23,6 +24,12 @@ private static final int id=1;
     public ArrayList<Course> courses;
     public ArrayList<Week> weeks;
     static public User user = new User();
+
+    public User(){
+        courses = new ArrayList<Course>();
+        weeks = new ArrayList<Week>();
+        weeks.add(new Week());
+    }
 
     public ArrayList<Course> getCourses() {
         return courses;
@@ -33,7 +40,7 @@ private static final int id=1;
     }
 
     public Week getWeek() {
-        return weeks.get(weeks.size());
+        return weeks.get(Week.getNum());
     }
 
     public int getAcademicYear() {

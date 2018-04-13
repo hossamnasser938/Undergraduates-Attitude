@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -18,6 +19,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
 
     public void signUpUser() {
+      
         EditText name = findViewById(R.id.Name);
         EditText department = findViewById(R.id.Department);
         EditText college = findViewById(R.id.College);
@@ -27,13 +29,16 @@ public class CreateProfileActivity extends AppCompatActivity {
         User.user.setCollege(college.getText().toString());
         User.user.setDepartment(department.getText().toString());
         User.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
+
         UserPrefs prefs =new UserPrefs(getApplicationContext());
 
         prefs.save();
-
+      
     }
 
     public void navigateToSubMainLayout(View view){
+        signUpUser();
+        Toast.makeText(getApplicationContext(), "Profile Created", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
         startActivity(intent);
     }

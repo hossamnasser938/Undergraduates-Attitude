@@ -11,12 +11,18 @@ public class Report{
     private int allRemainingHours;
     private boolean overflowed;
     private int allOverflowedHours;
-    private ArrayList<CommittedActivity> committedActivities;
     private ArrayList<CommittedCategory> committedCategories;
-    private double overallPercentage;
-    public static int getWeekHours() {
-        return WEEK_HOURS;
+    private int overallPercentage;
+    private String totalNumberHoursAdvice ;
+
+    public Report(){
+        committedCategories = new ArrayList<>();
+        for(OptimalCategory oc : KnowledgeBase.optimalCategories){
+            committedCategories.add(new CommittedCategory(oc.getCategory(), new ActivityDuration(0, 0)));
+        }
     }
+
+   
 
     public int getAllCommitedHours() {
         return allCommitedHours;
@@ -50,14 +56,6 @@ public class Report{
         this.allOverflowedHours = allOverflowedHours;
     }
 
-    public ArrayList<CommittedActivity> getCommittedActivities() {
-        return committedActivities;
-    }
-
-    public void setCommittedActivities(ArrayList<CommittedActivity> committedActivities) {
-        this.committedActivities = committedActivities;
-    }
-
     public ArrayList<CommittedCategory> getCommittedCategories() {
         return committedCategories;
     }
@@ -65,17 +63,33 @@ public class Report{
     public void setCommittedCategories(ArrayList<CommittedCategory> committedCategories) {
         this.committedCategories = committedCategories;
     }
-    public double calculateOverallPercentage(){
-        int h=0;
-        int m=0;
-        double overall=0;
-        for(CommittedActivity c:committedActivities) {
-            h += c.getCommittedDuration().getHours();
-            m += c.getCommittedDuration().getMinutes();
+
+    public int getOverallPercentage(){
+        calculateOverallPercentage();
+        return overallPercentage;
+    }
+
+    private void calculateOverallPercentage(){
+        int percentage = 0;
+        int i = 0;
+        for(CommittedCategory cc : getCommittedCategories()){
+            percentage += cc.getPercentage();
+            i++;
         }
-        h+=m/60;
-        m=m%60;
-        overall=h+(double)m/60;
-        return (overall/168)*100;
+        overallPercentage = percentage / i;
+    }
+
+    /**
+     * @return the totalNumberHoursAdvice
+     */
+    public String getTotalNumberHoursAdvice() {
+        return totalNumberHoursAdvice;
+    }
+
+    /**
+     * @param totalNumberHoursAdvice the totalNumberHoursAdvice to set
+     */
+    public void setTotalNumberHoursAdvice(String totalNumberHoursAdvice) {
+        this.totalNumberHoursAdvice = totalNumberHoursAdvice;
     }
 }

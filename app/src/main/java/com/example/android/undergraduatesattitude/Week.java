@@ -14,7 +14,6 @@ public class Week {
     private int wNum;
     private Date startDate;
     private Date endDate;
-    ArrayList<Activity> activities = new ArrayList<>();
     private Report report;
 
     public Week() {
@@ -36,14 +35,6 @@ public class Week {
 
     public void setwNum(int wNum) {
         this.wNum = wNum;
-    }
-
-    public ArrayList<Activity> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(ArrayList<Activity> activities) {
-        this.activities = activities;
     }
 
     public static int getNum() {

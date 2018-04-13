@@ -10,12 +10,11 @@
     <!-- User Information, Week Information -->
     
     <!-- Categories List -->
-    <ListView
+    <ExpandableListView
         android:id="@+id/categories_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     
     <!-- Total Week Percentage -->
-          
     
 </LinearLayout>
