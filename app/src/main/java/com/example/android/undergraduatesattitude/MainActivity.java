@@ -15,22 +15,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        File file = new File("user_file.ser");
-        if(file.exists()){
-            Toast.makeText(getApplicationContext(), "Found", Toast.LENGTH_SHORT).show();
-            try {
-                User.load(getApplicationContext());
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            setContentView(R.layout.activity_sub_main);
-        }
-        else{
-            Toast.makeText(getApplicationContext(), "Not Found", Toast.LENGTH_SHORT).show();
-            setContentView(R.layout.activity_main);
-        }
+        setContentView(R.layout.activity_main);
+
+        UserPrefs prefs =new UserPrefs(getApplicationContext());
+        prefs.load();
 
     }
 
