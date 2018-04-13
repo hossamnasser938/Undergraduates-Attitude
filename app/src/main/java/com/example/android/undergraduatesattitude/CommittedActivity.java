@@ -41,19 +41,20 @@ public class CommittedActivity extends OptimalActivity {
             case OPTIONAL:
                 if (CommittedDuration > maxDuration) {
                     advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.optionalDecreaseAdvice, CommittedDuration - maxDuration);
-
                 }
-
+                else
+                {
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.goodActivity, 0);
+                }
                 break;
             case RECOMMENDED:
-                if (CommittedDuration == 0) {
-                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.forgetHighlyRecommendAdvice, 0);
-                } else {
-                    if (CommittedDuration > maxDuration) {
-                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.recommendedDecreaseAdvice, CommittedDuration - maxDuration);
-                    } else if (CommittedDuration < minDuration) {
-                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.recommendedIncreaseAdvice, minDuration - CommittedDuration);
-                    }
+                if (CommittedDuration > maxDuration) {
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.recommendedDecreaseAdvice, CommittedDuration - maxDuration);
+                } else if (CommittedDuration < minDuration) {
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.recommendedIncreaseAdvice, minDuration - CommittedDuration);
+                }
+                else{
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.goodActivity, 0);
                 }
                 break;
 
@@ -66,19 +67,22 @@ public class CommittedActivity extends OptimalActivity {
                     } else if (CommittedDuration < minDuration) {
                         advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.highlyRecommendedIncreaseAdvice, minDuration - CommittedDuration);
                     }
+                    else {
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.goodActivity, 0);
+                    }
                 }
                 break;
 
             case MANDATORY:
                 if (CommittedDuration == 0) {
                     advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.forgetMandatoryAdvice, 0);
-
                 } else {
-
                     if (CommittedDuration > maxDuration) {
                         advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.mandatoryDecreaseAdvice, CommittedDuration - maxDuration);
                     } else if (CommittedDuration < minDuration) {
                         advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.mandatoryIncreaseAdvice, minDuration - CommittedDuration);
+                    }else{
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.goodActivity, 0);
                     }
                 }
                 break;

@@ -18,13 +18,14 @@ public class KnowledgeBase {
      */
     static final String overflowWeekHours = "The total number of hours in a week is " + Report.WEEK_HOURS + " , How could you commit ";
     static final String underflowWeekHours = "The total number of hours in a week is " + Report.WEEK_HOURS + " , and you just committed ";
+    static final String goodActivity = "You have committed a sufficient number of hours in this activity. Keep Up";
     static final String optionalDecreaseAdvice = "You have committed too many hours in this optional activity and you have to decrease it by ";
     static final String recommendedDecreaseAdvice = "It is recommended to decrease the number of hours you committed to this activity by ";
     static final String recommendedIncreaseAdvice = "It is recommended to increase the number of hours you committed to this activity by ";
     static final String highlyRecommendedDecreaseAdvice = "It is highly recommended to decrease the number of hours you committed to this activity by ";
-    static final String highlyRecommendedIncreaseAdvice = "It is highly recommended to decrease the number of hours you committed to this activity by ";
+    static final String highlyRecommendedIncreaseAdvice = "It is highly recommended to increase the number of hours you committed to this activity by ";
     static final String mandatoryDecreaseAdvice = "It is mandatory to decrease the number of hours you committed to this activity by ";
-    static final String mandatoryIncreaseAdvice = "It is mandatory to decrease the number of hours you committed to this activity by ";
+    static final String mandatoryIncreaseAdvice = "It is mandatory to increase the number of hours you committed to this activity by ";
     static final String forgetHighlyRecommendAdvice = "You either forgot to do or to add the number of hours you committed to this highly recommended activity";
     static final String forgetMandatoryAdvice = "Certainly You have forgotten to add the number of hours you committed to this mandatory activity";
 
