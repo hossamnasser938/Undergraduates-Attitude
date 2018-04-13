@@ -32,7 +32,7 @@ public class CommittedActivity extends OptimalActivity {
 
     private void generateAdice() {
 
-        Report report = User.user.getWeek().getReport();
+        Report report = User.user.getCurrentWeek().getReport();
         double CommittedDuration = this.getCommittedDuration().getHours() + ((this.getCommittedDuration().getMinutes()) / 60);
         double maxDuration = this.getMaxDuration().getHours() + ((this.getMaxDuration().getMinutes()) / 60);
         double minDuration = this.getMinDuration().getHours() + ((this.getMinDuration().getMinutes()) / 60);

@@ -2,7 +2,6 @@ package com.example.android.undergraduatesattitude;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -101,7 +100,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
         int i = 0;
 
-        for (CommittedCategory c : User.user.getWeek().getReport().getCommittedCategories()) {
+        for (CommittedCategory c : User.user.getCurrentWeek().getReport().getCommittedCategories()) {
             if (c.getCategory() == committedActivity.getCategory()) {
                 c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + committedActivity.getDuration().getHours());
                 c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + committedActivity.getDuration().getMinutes());
@@ -111,7 +110,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
                 for(CommittedActivity ca : c.getCommittedActivities()){
                     if(ca.getName().equals(committedActivity.getName())){
-                        User.user.getWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
+                        User.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
                         found = true;
                         break;
                     }
@@ -119,7 +118,7 @@ public class AddActivityActivity extends AppCompatActivity {
                 }
 
                 if(!found){
-                    User.user.getWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
+                    User.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
                 }
             }
             i++;

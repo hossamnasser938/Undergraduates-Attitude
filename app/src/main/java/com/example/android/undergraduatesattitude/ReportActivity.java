@@ -20,11 +20,13 @@ public class ReportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
+        int weekIndex = getIntent().getIntExtra("EXTRA_WEEK_INDEX", 0);
+
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.categories_list);
 
         // preparing list data
-        prepareListData();
+        prepareListData(weekIndex);
 
         listAdapter = new ExpandableListAdapter(getApplicationContext(), listDataGroup, listDataChild);
 
@@ -36,9 +38,9 @@ public class ReportActivity extends AppCompatActivity {
     /*
      * Preparing the list data
      */
-    private void prepareListData() {
+    private void prepareListData(int weekIndex) {
 
-        listDataGroup = User.user.getWeek().getReport().getCommittedCategories();
+        listDataGroup = User.user.getWeeks().get(weekIndex).getReport().getCommittedCategories();
 
         listDataChild = new HashMap<>();
 
