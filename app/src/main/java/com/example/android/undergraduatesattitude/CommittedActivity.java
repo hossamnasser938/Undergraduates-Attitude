@@ -22,6 +22,7 @@ public class CommittedActivity extends OptimalActivity {
     }
 
     /**
+     * Inference Engine
      * @return the advice
      */
     public String getAdvice() {
@@ -30,64 +31,54 @@ public class CommittedActivity extends OptimalActivity {
     }
 
     private void generateAdice() {
-        String Advice = null;
-        String optionalAdvice = "You Have more committed Duration in this Activity which the number of hours is : ";
-        String recommendedDecreaseAdvice = "You must decrease the committed duration with  ";
-        String recommendedIncreaseAdvice = "You must increase the committed duration with ";
-        String highlyRecommendedDecreaseAdvice = " may be need to decrease the committed duration with ";
-        String highlyRecommendedIncreaseAdvice = "You need to increase the committed duration with ";
-        String mandatoryDecreaseAdvice = "To much time , you must decrease the committed duration with ";
-        String mandatoryIncreaseAdvice = "Committed duration must be increase with ";
-        String forgetRecommendAdvice = " you have do this activity ";
-        String forgetMandatoryAdvice = " you must do this activity ";
-        String totalNumberHourseAdvice = null;
+
         Report report = User.user.getWeek().getReport();
         double CommittedDuration = this.getCommittedDuration().getHours() + ((this.getCommittedDuration().getMinutes()) / 60);
         double maxDuration = this.getMaxDuration().getHours() + ((this.getMaxDuration().getMinutes()) / 60);
         double minDuration = this.getMinDuration().getHours() + ((this.getMinDuration().getMinutes()) / 60);
-        int allCommittedHourse = report.getAllCommitedHours();
+        int allCommittedHours = report.getAllCommitedHours();
         switch (this.getPriority()) {
             case OPTIONAL:
                 if (CommittedDuration > maxDuration) {
-                    Advice = optionalAdvice + (CommittedDuration - maxDuration) + " Hrs";
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.optionalDecreaseAdvice, CommittedDuration - maxDuration);
 
                 }
 
                 break;
             case RECOMMENDED:
                 if (CommittedDuration == 0) {
-                    Advice = forgetRecommendAdvice;
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.forgetHighlyRecommendAdvice, 0);
                 } else {
                     if (CommittedDuration > maxDuration) {
-                        Advice = recommendedDecreaseAdvice + (CommittedDuration - maxDuration) + " Hrs";
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.recommendedDecreaseAdvice, CommittedDuration - maxDuration);
                     } else if (CommittedDuration < minDuration) {
-                        Advice = recommendedIncreaseAdvice + (minDuration - CommittedDuration) + " Hrs";
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.recommendedIncreaseAdvice, minDuration - CommittedDuration);
                     }
                 }
                 break;
 
             case HIGHLY_RECOMMENDED:
                 if (CommittedDuration == 0) {
-                    Advice = forgetRecommendAdvice;
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.forgetHighlyRecommendAdvice, 0);
                 } else {
                     if (CommittedDuration > maxDuration) {
-                        Advice = highlyRecommendedDecreaseAdvice + (CommittedDuration - maxDuration) + " Hrs";
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.highlyRecommendedDecreaseAdvice, CommittedDuration - maxDuration);
                     } else if (CommittedDuration < minDuration) {
-                        Advice = highlyRecommendedIncreaseAdvice + (minDuration - CommittedDuration) + " Hrs";
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.highlyRecommendedIncreaseAdvice, minDuration - CommittedDuration);
                     }
                 }
                 break;
 
             case MANDATORY:
                 if (CommittedDuration == 0) {
-                    Advice = forgetMandatoryAdvice;
+                    advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.forgetMandatoryAdvice, 0);
 
                 } else {
 
                     if (CommittedDuration > maxDuration) {
-                        Advice = mandatoryDecreaseAdvice + (CommittedDuration - maxDuration) + " Hrs to be come better !";
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.mandatoryDecreaseAdvice, CommittedDuration - maxDuration);
                     } else if (CommittedDuration < minDuration) {
-                        Advice = mandatoryIncreaseAdvice + (minDuration - CommittedDuration) + " Hrs to be come better ";
+                        advice = KnowledgeBase.generateAdviceForm(KnowledgeBase.mandatoryIncreaseAdvice, minDuration - CommittedDuration);
                     }
                 }
                 break;
@@ -96,15 +87,13 @@ public class CommittedActivity extends OptimalActivity {
                 break;
 
         }
-        if (allCommittedHourse > report.WEEK_HOURS) {
-            totalNumberHourseAdvice = "You enter large number of Hours is " + (allCommittedHourse) + " Hrs V.S the number of the week hours is 168 Hrs ";
-            report.setTotalNumberHoursAdvice(totalNumberHourseAdvice);
-        } else if (report.WEEK_HOURS > allCommittedHourse) {
-            totalNumberHourseAdvice = "you have " + (168 - allCommittedHourse) + " Hrs which you have to make use of this hours to do anther activity ";
-            report.setTotalNumberHoursAdvice(totalNumberHourseAdvice);
+
+        if (allCommittedHours > Report.WEEK_HOURS) {
+            report.setTotalNumberHoursAdvice(KnowledgeBase.generateAdviceForm(KnowledgeBase.overflowWeekHours, allCommittedHours));
+        } else{
+            report.setTotalNumberHoursAdvice(KnowledgeBase.generateAdviceForm(KnowledgeBase.underflowWeekHours, allCommittedHours));
         }
 
-        this.advice = Advice;
     }
 
 }
