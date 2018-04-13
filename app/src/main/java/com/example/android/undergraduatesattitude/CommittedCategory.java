@@ -53,7 +53,7 @@ public class CommittedCategory extends OptimalCategory {
         double optimalMinHours = getMinDuration().getHours() + (double) getMinDuration().getMinutes() / 60;
         double committedHours = committedDuration.getHours() + (double) committedDuration.getMinutes() / 60;
         double optimalAverageHours = (optimalMaxHours + optimalMinHours) / 2;
-        percentage = (int) (committedHours / optimalAverageHours);
+        percentage = (int) ((committedHours / optimalAverageHours) * 100);
     }
 
 }
