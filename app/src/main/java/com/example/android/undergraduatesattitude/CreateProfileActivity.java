@@ -19,19 +19,21 @@ public class CreateProfileActivity extends AppCompatActivity {
     }
 
     public void signUpUser() {
+      
         EditText name = findViewById(R.id.Name);
         EditText department = findViewById(R.id.Department);
         EditText college = findViewById(R.id.College);
         EditText academicYear = findViewById(R.id.Academic_Year);
+
         User.user.setName(name.getText().toString());
         User.user.setCollege(college.getText().toString());
         User.user.setDepartment(department.getText().toString());
         User.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
-        try {
-            User.user.save(getApplicationContext());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        UserPrefs prefs =new UserPrefs(getApplicationContext());
+
+        prefs.save();
+      
     }
 
     public void navigateToSubMainLayout(View view){
