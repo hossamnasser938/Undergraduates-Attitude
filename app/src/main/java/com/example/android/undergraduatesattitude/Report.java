@@ -13,6 +13,7 @@ public class Report{
     private int allOverflowedHours;
     private ArrayList<CommittedCategory> committedCategories;
     private int overallPercentage;
+    private String totalNumberHoursAdvice ;
 
     public Report(){
         committedCategories = new ArrayList<>();
@@ -21,9 +22,7 @@ public class Report{
         }
     }
 
-    public static int getWeekHours() {
-        return WEEK_HOURS;
-    }
+   
 
     public int getAllCommitedHours() {
         return allCommitedHours;
@@ -78,5 +77,19 @@ public class Report{
             i++;
         }
         overallPercentage = percentage / i;
+    }
+
+    /**
+     * @return the totalNumberHoursAdvice
+     */
+    public String getTotalNumberHoursAdvice() {
+        return totalNumberHoursAdvice;
+    }
+
+    /**
+     * @param totalNumberHoursAdvice the totalNumberHoursAdvice to set
+     */
+    public void setTotalNumberHoursAdvice(String totalNumberHoursAdvice) {
+        this.totalNumberHoursAdvice = totalNumberHoursAdvice;
     }
 }
