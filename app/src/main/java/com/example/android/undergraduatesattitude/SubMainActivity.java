@@ -30,6 +30,7 @@ public class SubMainActivity extends AppCompatActivity {
     }
 
     public void navigateToReportActivity(View view){
+
         AlertDialog.Builder chooseActionDialog = new AlertDialog.Builder(SubMainActivity.this);
         chooseActionDialog.setTitle("Choose Action");
 
@@ -61,11 +62,35 @@ public class SubMainActivity extends AppCompatActivity {
 
         chooseActionDialog.show();
 
-                //Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
-                //startActivity(intent);
     }
 
     public void navigateToShow(View view){
-        Toast.makeText(getApplicationContext(), "Not implemented Yet", Toast.LENGTH_LONG).show();
+
+        AlertDialog.Builder chooseWeekDialog = new AlertDialog.Builder(SubMainActivity.this);
+        chooseWeekDialog.setTitle("Choose week");
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item);
+        for(int i = 0; i < User.user.getWeeks().size(); i++){
+            adapter.add("Week" + (i + 1));
+        }
+
+        chooseWeekDialog.setAdapter(adapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
+                intent.putExtra("EXTRA_WEEK_NO", which);
+                startActivity(intent);
+            }
+        });
+
+        chooseWeekDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        chooseWeekDialog.show();
+
     }
 }
