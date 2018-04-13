@@ -42,7 +42,7 @@ public class SubMainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
-                        intent.putExtra("EXTRA_WEEK_NO", Week.getNum());
+                        intent.putExtra("EXTRA_WEEK_INDEX", Week.getNum());
                         if(which == 0){
                             startActivity(intent);
                         }
@@ -78,7 +78,7 @@ public class SubMainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
-                intent.putExtra("EXTRA_WEEK_NO", which);
+                intent.putExtra("EXTRA_WEEK_INDEX", which);
                 startActivity(intent);
             }
         });

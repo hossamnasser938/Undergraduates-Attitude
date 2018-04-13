@@ -101,7 +101,7 @@ public class AddActivityActivity extends AppCompatActivity {
         int i = 0;
 
         for (CommittedCategory c : User.user.getCurrentWeek().getReport().getCommittedCategories()) {
-            if (c.getCategory() == committedActivity.getCategory()) {
+            if (c.getCategory().equals(committedActivity.getCategory())) {
                 c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + committedActivity.getDuration().getHours());
                 c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + committedActivity.getDuration().getMinutes());
 

@@ -49,7 +49,7 @@ public class KnowledgeBase {
     Optimal Activities
      */
     static public final OptimalActivity sleeping = new OptimalActivity(Category.HEALTH, "Sleeping", new ActivityDuration(56, 0), new ActivityDuration(42, 0), OptimalActivity.Priority.MANDATORY);
-    static public final OptimalActivity sports = new OptimalActivity(Category.HEALTH, "Sports", new ActivityDuration(7, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
+    static public final OptimalActivity sports = new OptimalActivity(Category.HEALTH, "Sports", new ActivityDuration(7, 0), new ActivityDuration(3, 30), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
     static public final OptimalActivity houseHold = new OptimalActivity(Category.LIFE, "HouseHold", new ActivityDuration(14, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
     static public final OptimalActivity eatingAndDrinking = new OptimalActivity(Category.LIFE, "Eating and Drinking", new ActivityDuration(10, 30), new ActivityDuration(7, 0), OptimalActivity.Priority.MANDATORY);
     static public final OptimalActivity purchasingGoodsAndServices = new OptimalActivity(Category.LIFE, "Purchasing goods and services", new ActivityDuration(3, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
@@ -151,7 +151,7 @@ public class KnowledgeBase {
         else{
             int hours = (int) committedHours;
             int minutes = (int) ((committedHours - hours) * 60);
-            return form + hours + "hours" + " and " + minutes + "minutes";
+            return form + hours + " hours" + " and " + minutes + " minutes";
         }
     }
 

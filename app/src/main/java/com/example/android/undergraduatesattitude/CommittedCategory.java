@@ -49,11 +49,11 @@ public class CommittedCategory extends OptimalCategory {
     }
 
     private void calculatePercentage() {
-        double optimalMaxHours = this.getMaxDuration().getHours() + (double) this.getMaxDuration().getMinutes() / 60;
-        double optimalMinHours = this.getMinDuration().getHours() + (double) this.getMinDuration().getMinutes() / 60;
-        double committedHours = this.committedDuration.getHours() + (double) this.committedDuration.getMinutes() / 60;
+        double optimalMaxHours = getMaxDuration().getHours() + (double) getMaxDuration().getMinutes() / 60;
+        double optimalMinHours = getMinDuration().getHours() + (double) getMinDuration().getMinutes() / 60;
+        double committedHours = committedDuration.getHours() + (double) committedDuration.getMinutes() / 60;
         double optimalAverageHours = (optimalMaxHours + optimalMinHours) / 2;
-        this.percentage = (int) (committedHours / optimalAverageHours);
+        percentage = (int) (committedHours / optimalAverageHours);
     }
 
 }
