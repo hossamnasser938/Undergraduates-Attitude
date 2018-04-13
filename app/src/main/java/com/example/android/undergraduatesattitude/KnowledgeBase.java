@@ -143,12 +143,14 @@ public class KnowledgeBase {
     }
 
 
-    static public String generateAdviceForm(String form, double hours){
-        if(hours == 0){
+    static public String generateAdviceForm(String form, double committedHours){
+        if(committedHours == 0){
             return form;
         }
         else{
-            return form + hours + "hours";
+            int hours = (int) committedHours;
+            int minutes = (int) ((committedHours - hours) * 60);
+            return form + hours + "hours" + " and " + minutes + "minutes";
         }
     }
 
