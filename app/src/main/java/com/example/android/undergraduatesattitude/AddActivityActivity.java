@@ -125,8 +125,10 @@ public class AddActivityActivity extends AppCompatActivity {
             i++;
         }
 
+        /*
         UserPrefs prefs =new UserPrefs(getApplicationContext());
         prefs.save();
+        */
 
     }
 }

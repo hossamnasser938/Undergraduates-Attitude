@@ -26,8 +26,8 @@ public class User {
     static public User user = new User();
 
     public User(){
-        courses = new ArrayList<Course>();
-        weeks = new ArrayList<Week>();
+        courses = new ArrayList<>();
+        weeks = new ArrayList<>();
         weeks.add(new Week());
     }
 
