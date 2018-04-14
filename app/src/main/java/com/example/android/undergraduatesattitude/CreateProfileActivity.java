@@ -35,10 +35,8 @@ public class CreateProfileActivity extends AppCompatActivity {
         User.user.setDepartment(department.getText().toString());
         User.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
 
-        /*
-        UserPrefs prefs =new UserPrefs(getApplicationContext());
-        prefs.save();
-        */
+        MainActivity.prefs =new UserPrefs(getApplicationContext());
+        MainActivity.prefs.save();
 
         return true;
       

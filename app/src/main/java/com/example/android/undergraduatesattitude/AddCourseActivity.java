@@ -72,10 +72,7 @@ public class AddCourseActivity extends AppCompatActivity {
         User.user.getCourses().add(c);
         KnowledgeBase.createCourseActivity(c);
 
-        /*
-        UserPrefs prefs =new UserPrefs(getApplicationContext());
-        prefs.save();
-        */
+        MainActivity.prefs.save();
 
         return true;
 

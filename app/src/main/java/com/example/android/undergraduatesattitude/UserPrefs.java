@@ -6,29 +6,37 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 
 public class UserPrefs {
-    /** This application's preferences label */
+    /**
+     * This application's preferences label
+     */
     Gson gson = new Gson();
 
     String user_json = gson.toJson(User.user);
     private static final String PREFS_NAME = "com.example.android.undergraduatesattitude.UserPrefs";
 
-    /** This application's preferences */
+    /**
+     * This application's preferences
+     */
 
     private static SharedPreferences settings;
 
-    /** This application's settings editor*/
+    /**
+     * This application's settings editor
+     */
 
     private static SharedPreferences.Editor editor;
 
-    /** Constructor takes an android.content.Context argument*/
+    /**
+     * Constructor takes an android.content.Context argument
+     */
 
-    public UserPrefs(Context ctx){
+    public UserPrefs(Context ctx) {
 
-        if(settings == null){
+        if (settings == null) {
 
             settings = ctx.getSharedPreferences(PREFS_NAME,
 
-                    Context.MODE_PRIVATE );
+                    Context.MODE_PRIVATE);
 
         }
 
@@ -45,8 +53,9 @@ public class UserPrefs {
         editor = settings.edit();
 
     }
-    public void save(){
-        String id =  "" +  User.getId(); // get storage key
+
+    public void save() {
+        String id = "" + User.getId(); // get storage key
 
         editor.putString(id, user_json);
 
@@ -54,11 +63,16 @@ public class UserPrefs {
 
 
     }
-    public void load(){
-        String id =  "" +  User.getId();
+
+    public void load() {
+        String id = "" + User.getId();
         user_json = settings.getString(id, "");
 
-        User.user  = gson.fromJson(user_json, User.class);
+        User.user = gson.fromJson(user_json, User.class);
 
+    }
+
+    public static SharedPreferences getSettings() {
+        return settings;
     }
 }
