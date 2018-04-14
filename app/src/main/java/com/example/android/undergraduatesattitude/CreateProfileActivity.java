@@ -45,7 +45,7 @@ public class CreateProfileActivity extends AppCompatActivity {
     public void navigateToSubMainLayout(View view){
         if(signUpUser()){
             Toast.makeText(getApplicationContext(), "Profile Created", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
+            Intent intent = new Intent(getApplicationContext() , MainActivity.class);
             startActivity(intent);
         }
         else{

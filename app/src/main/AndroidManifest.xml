@@ -20,8 +20,6 @@
         <activity
             android:name=".CreateProfileActivity"
             android:label="@string/create_profile"/>
-        <activity android:name=".SubMainActivity"
-            android:label="@string/main"/>
         <activity android:name=".AddCourseActivity"
             android:label="@string/add_course"/>
         <activity android:name=".AddActivityActivity"
