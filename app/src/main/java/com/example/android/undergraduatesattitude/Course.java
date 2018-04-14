@@ -90,10 +90,10 @@ public class Course {
                 totalHomeworkHours = attendanceHours;
                 break;
             case MEDIUM:
-                totalHomeworkHours = attendanceHours.mulDuration(2);
+                totalHomeworkHours = attendanceHours.mulDuration(1.5);
                 break;
             case DIFFICULT:
-                totalHomeworkHours = attendanceHours.mulDuration(3);
+                totalHomeworkHours = attendanceHours.mulDuration(2);
                 break;
             default:
                 break;
@@ -112,10 +112,10 @@ public class Course {
                     finalProjectDuration = attendanceHours;
                     break;
                 case MEDIUM:
-                    finalProjectDuration = attendanceHours.mulDuration(2);
+                    finalProjectDuration = attendanceHours.mulDuration(1.5);
                     break;
                 case DIFFICULT:
-                    finalProjectDuration = attendanceHours.mulDuration(3);
+                    finalProjectDuration = attendanceHours.mulDuration(2);
                     break;
                 default:
                     break;
@@ -130,10 +130,10 @@ public class Course {
                     assignmentsDuration = attendanceHours;
                     break;
                 case MEDIUM:
-                    assignmentsDuration = attendanceHours.mulDuration(2);
+                    assignmentsDuration = attendanceHours.mulDuration(1.5);
                     break;
                 case DIFFICULT:
-                    assignmentsDuration = attendanceHours.mulDuration(3);
+                    assignmentsDuration = attendanceHours.mulDuration(2);
                     break;
                 default:
                     break;

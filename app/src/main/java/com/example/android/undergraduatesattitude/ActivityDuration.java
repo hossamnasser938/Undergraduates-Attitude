@@ -41,10 +41,15 @@ public class ActivityDuration {
         return addedDuration;
     }
     
-    public ActivityDuration mulDuration(int multiplier){
+    public ActivityDuration mulDuration(double multiplier){
+        double dHours;
+        double dMinutes;
         ActivityDuration multipliedDuration = new ActivityDuration(0, 0);
-        multipliedDuration.hours = this.hours * multiplier;
-        multipliedDuration.minutes = this.minutes * multiplier;
+        dHours = hours * multiplier;
+        dMinutes = minutes * multiplier;
+        multipliedDuration.hours = (int) dHours;
+        multipliedDuration.minutes = (int)((dHours - multipliedDuration.hours) * 60);
+        multipliedDuration.minutes +=  (int) dMinutes;
         if(multipliedDuration.minutes >= 60){
             multipliedDuration.hours += multipliedDuration.minutes / 60;
             multipliedDuration.minutes %= 60;
