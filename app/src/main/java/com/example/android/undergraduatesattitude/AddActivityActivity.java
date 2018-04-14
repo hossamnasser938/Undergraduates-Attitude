@@ -86,16 +86,38 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     public void notifyActivityAdded(View view){
-        addActivity();
-        Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
+        if(addActivity()){
+            Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext() , "Please, fill Required fields" , Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    public void addActivity() {
+    public boolean addActivity() {
         Report report = User.user.getCurrentWeek().getReport();
         Spinner activityCategory = findViewById(R.id.category_spinner);
         Spinner activityName = findViewById(R.id.activity_spinner);
         EditText h = findViewById(R.id.Hours);
         EditText m = findViewById(R.id.Minutes);
+
+        if(activityCategory.getSelectedItem().equals("Choose Category") || activityName.getSelectedItem().equals("Choose Activity")){
+            return false;
+        }
+
+        if(h.getText().toString().matches("") && m.getText().toString().matches("")){
+            return false;
+        }
+
+        if(h.getText().toString().matches("")){
+            h.setText("0");
+        }
+
+        if(m.getText().toString().matches("")){
+            m.setText("0");
+        }
+
         ActivityDuration d = new ActivityDuration(Integer.parseInt(h.getText().toString()), Integer.parseInt(m.getText().toString()));
         report.addToAllCommittedHours(d.getHours() + (double) d.getMinutes() / 60);
         CommittedActivity committedActivity = new CommittedActivity(Category.valueOf(activityCategory.getSelectedItem().toString()), activityName.getSelectedItem().toString(), d);
@@ -130,6 +152,8 @@ public class AddActivityActivity extends AppCompatActivity {
         UserPrefs prefs =new UserPrefs(getApplicationContext());
         prefs.save();
         */
+
+        return true;
 
     }
 }

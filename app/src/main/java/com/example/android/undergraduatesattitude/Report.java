@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Report{
 
-    public static final int WEEK_HOURS=168;
+    public static final int WEEK_HOURS = 168;
     private double allCommittedHours;
     private int allRemainingHours;
     private boolean overflowed;
