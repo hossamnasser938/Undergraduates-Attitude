@@ -32,18 +32,18 @@ public class AddCourseActivity extends AppCompatActivity {
         difficultySpinner.setAdapter(difficultyAdapter);
     }
 
-    public void notifyCourseAdded(View view){
+    public void notifyCourseAdded(View view) {
         addCourse();
         Toast.makeText(getApplicationContext(), "Course Added", Toast.LENGTH_LONG).show();
     }
 
-    public void addCourse () {
-        Spinner difficulty =findViewById(R.id.difficulty_spinner);
-        EditText name=findViewById(R.id.Name);
-        EditText hours=findViewById(R.id.Hours);
-        EditText minutes=findViewById(R.id.Minutes);
-        CheckBox assignments=findViewById(R.id.Assignments);
-        CheckBox finalProject=findViewById(R.id.Final_Project);
+    public void addCourse() {
+        Spinner difficulty = findViewById(R.id.difficulty_spinner);
+        EditText name = findViewById(R.id.Name);
+        EditText hours = findViewById(R.id.Hours);
+        EditText minutes = findViewById(R.id.Minutes);
+        CheckBox assignments = findViewById(R.id.Assignments);
+        CheckBox finalProject = findViewById(R.id.Final_Project);
 
         Course.Difficulty difficulty1 = Course.Difficulty.valueOf(difficulty.getSelectedItem().toString());
 
@@ -51,11 +51,9 @@ public class AddCourseActivity extends AppCompatActivity {
         User.user.getCourses().add(c);
         KnowledgeBase.createCourseActivity(c);
 
-        try {
-            User.user.save(getApplicationContext());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        MainActivity.prefs.save();
+
 
     }
 
