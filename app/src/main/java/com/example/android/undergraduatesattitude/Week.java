@@ -22,23 +22,15 @@ public class Week {
         wNum=num;
     }
 
+    public static int getNum() {
+        return num;
+    }
+
     /**
      * @return the startDate
      */
     public Date getStartDate() {
         return startDate;
-    }
-
-    public int getwNum() {
-        return wNum;
-    }
-
-    public void setwNum(int wNum) {
-        this.wNum = wNum;
-    }
-
-    public static int getNum() {
-        return num;
     }
 
     /**

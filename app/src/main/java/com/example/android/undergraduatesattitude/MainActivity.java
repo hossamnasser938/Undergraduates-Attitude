@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         prefs = new UserPrefs(getApplicationContext());
-        //if(file.exists()){
+        
         if (UserPrefs.getSettings().contains(id)) {
             Toast.makeText(getApplicationContext(), "Found", Toast.LENGTH_SHORT).show();
 
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Not Found", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_main);
         }
+      
+        setContentView(R.layout.activity_main);
 
     }
 

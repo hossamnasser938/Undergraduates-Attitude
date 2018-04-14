@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -95,6 +96,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView lblListHeader = (TextView) view.findViewById(R.id.category_name);
         lblListHeader.setTypeface(null, Typeface.BOLD);
         lblListHeader.setText(headerTitle.getCategory().toString());
+
+        TextView percentage = view.findViewById(R.id.category_percentage);
+        percentage.setText(headerTitle.getPercentage() + "%");
 
         return view;
     }

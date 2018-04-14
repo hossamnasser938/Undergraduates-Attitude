@@ -1,13 +1,5 @@
 package com.example.android.undergraduatesattitude;
 
-import android.content.Context;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -21,14 +13,14 @@ public class User {
     private String college;
     private int academicYear;
     private String department;
-    public ArrayList<Course> courses;
-    public ArrayList<Week> weeks;
+    private ArrayList<Course> courses;
+    private ArrayList<Week> weeks;
     static public User user = new User();
 
     public User(){
-        courses = new ArrayList<Course>();
-        weeks = new ArrayList<Week>();
-        weeks.add(new Week());
+        setCourses(new ArrayList<Course>());
+        setWeeks(new ArrayList<Week>());
+        getWeeks().add(new Week());
     }
 
     public ArrayList<Course> getCourses() {
@@ -39,8 +31,8 @@ public class User {
         this.courses = courses;
     }
 
-    public Week getWeek() {
-        return weeks.get(Week.getNum());
+    public Week getCurrentWeek() {
+        return getWeeks().get(Week.getNum());
     }
 
     public int getAcademicYear() {
@@ -77,5 +69,13 @@ public class User {
 
     public static int getId() {
         return id;
+    }
+
+    public ArrayList<Week> getWeeks() {
+        return weeks;
+    }
+
+    public void setWeeks(ArrayList<Week> weeks) {
+        this.weeks = weeks;
     }
 }

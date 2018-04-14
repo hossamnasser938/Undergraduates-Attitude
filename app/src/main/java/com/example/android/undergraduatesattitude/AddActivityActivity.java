@@ -2,7 +2,6 @@ package com.example.android.undergraduatesattitude;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -87,22 +86,46 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     public void notifyActivityAdded(View view){
-        addActivity();
-        Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
+        if(addActivity()){
+            Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getApplicationContext() , "Please, fill Required fields" , Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    public void addActivity() {
+    public boolean addActivity() {
+        Report report = User.user.getCurrentWeek().getReport();
         Spinner activityCategory = findViewById(R.id.category_spinner);
         Spinner activityName = findViewById(R.id.activity_spinner);
         EditText h = findViewById(R.id.Hours);
         EditText m = findViewById(R.id.Minutes);
+
+        if(activityCategory.getSelectedItem().equals("Choose Category") || activityName.getSelectedItem().equals("Choose Activity")){
+            return false;
+        }
+
+        if(h.getText().toString().matches("") && m.getText().toString().matches("")){
+            return false;
+        }
+
+        if(h.getText().toString().matches("")){
+            h.setText("0");
+        }
+
+        if(m.getText().toString().matches("")){
+            m.setText("0");
+        }
+
         ActivityDuration d = new ActivityDuration(Integer.parseInt(h.getText().toString()), Integer.parseInt(m.getText().toString()));
+        report.addToAllCommittedHours(d.getHours() + (double) d.getMinutes() / 60);
         CommittedActivity committedActivity = new CommittedActivity(Category.valueOf(activityCategory.getSelectedItem().toString()), activityName.getSelectedItem().toString(), d);
 
         int i = 0;
 
-        for (CommittedCategory c : User.user.getWeek().getReport().getCommittedCategories()) {
-            if (c.getCategory() == committedActivity.getCategory()) {
+        for (CommittedCategory c : User.user.getCurrentWeek().getReport().getCommittedCategories()) {
+            if (c.getCategory().equals(committedActivity.getCategory())) {
                 c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + committedActivity.getDuration().getHours());
                 c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + committedActivity.getDuration().getMinutes());
 
@@ -111,7 +134,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
                 for(CommittedActivity ca : c.getCommittedActivities()){
                     if(ca.getName().equals(committedActivity.getName())){
-                        User.user.getWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
+                        User.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
                         found = true;
                         break;
                     }
@@ -119,11 +142,18 @@ public class AddActivityActivity extends AppCompatActivity {
                 }
 
                 if(!found){
-                    User.user.getWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
+                    User.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
                 }
             }
             i++;
         }
+
+        /*
+        UserPrefs prefs =new UserPrefs(getApplicationContext());
+        prefs.save();
+        */
+
+        return true;
 
     }
 }
