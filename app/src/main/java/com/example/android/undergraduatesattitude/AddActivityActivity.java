@@ -91,11 +91,13 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     public void addActivity() {
+        Report report = User.user.getCurrentWeek().getReport();
         Spinner activityCategory = findViewById(R.id.category_spinner);
         Spinner activityName = findViewById(R.id.activity_spinner);
         EditText h = findViewById(R.id.Hours);
         EditText m = findViewById(R.id.Minutes);
         ActivityDuration d = new ActivityDuration(Integer.parseInt(h.getText().toString()), Integer.parseInt(m.getText().toString()));
+        report.addToAllCommittedHours(d.getHours() + (double) d.getMinutes() / 60);
         CommittedActivity committedActivity = new CommittedActivity(Category.valueOf(activityCategory.getSelectedItem().toString()), activityName.getSelectedItem().toString(), d);
 
         int i = 0;

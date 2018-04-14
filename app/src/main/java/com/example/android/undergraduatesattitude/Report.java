@@ -7,13 +7,13 @@ import java.util.ArrayList;
 public class Report{
 
     public static final int WEEK_HOURS=168;
-    private int allCommitedHours;
+    private double allCommittedHours;
     private int allRemainingHours;
     private boolean overflowed;
     private int allOverflowedHours;
     private ArrayList<CommittedCategory> committedCategories;
     private int overallPercentage;
-    private String totalNumberHoursAdvice ;
+    private String weekAdvice;
 
     public Report(){
         committedCategories = new ArrayList<>();
@@ -24,12 +24,12 @@ public class Report{
 
    
 
-    public int getAllCommitedHours() {
-        return allCommitedHours;
+    public double getAllCommittedHours() {
+        return allCommittedHours;
     }
 
-    public void setAllCommitedHours(int allCommitedHours) {
-        this.allCommitedHours = allCommitedHours;
+    public void addToAllCommittedHours(double allCommittedHours) {
+        this.allCommittedHours += allCommittedHours;
     }
 
     public int getAllRemainingHours() {
@@ -80,16 +80,28 @@ public class Report{
     }
 
     /**
-     * @return the totalNumberHoursAdvice
+     * @return the weekAdvice
      */
-    public String getTotalNumberHoursAdvice() {
-        return totalNumberHoursAdvice;
+    public String getWeekAdvice() {
+        generateWeekAdvice();
+        return weekAdvice;
     }
 
     /**
-     * @param totalNumberHoursAdvice the totalNumberHoursAdvice to set
+     * @param weekAdvice the weekAdvice to set
      */
-    public void setTotalNumberHoursAdvice(String totalNumberHoursAdvice) {
-        this.totalNumberHoursAdvice = totalNumberHoursAdvice;
+    public void setWeekAdvice(String weekAdvice) {
+        this.weekAdvice = weekAdvice;
+    }
+
+    public void generateWeekAdvice(){
+        if (allCommittedHours > WEEK_HOURS) {
+            weekAdvice = KnowledgeBase.generateAdviceForm(KnowledgeBase.overflowWeekHours, allCommittedHours);
+        } else{
+            weekAdvice = KnowledgeBase.generateAdviceForm(KnowledgeBase.underflowWeekHours, allCommittedHours);
+            if(allCommittedHours == 0){
+                weekAdvice += "0 hours";
+            }
+        }
     }
 }

@@ -32,11 +32,9 @@ public class CommittedActivity extends OptimalActivity {
 
     private void generateAdice() {
 
-        Report report = User.user.getCurrentWeek().getReport();
         double CommittedDuration = getCommittedDuration().getHours() + ((double)(getCommittedDuration().getMinutes()) / 60);
         double maxDuration = getMaxDuration().getHours() + ((double)(getMaxDuration().getMinutes()) / 60);
         double minDuration = getMinDuration().getHours() + ((double)(getMinDuration().getMinutes()) / 60);
-        int allCommittedHours = report.getAllCommitedHours();
         switch (this.getPriority()) {
             case OPTIONAL:
                 if (CommittedDuration > maxDuration) {
@@ -90,12 +88,6 @@ public class CommittedActivity extends OptimalActivity {
             default:
                 break;
 
-        }
-
-        if (allCommittedHours > Report.WEEK_HOURS) {
-            report.setTotalNumberHoursAdvice(KnowledgeBase.generateAdviceForm(KnowledgeBase.overflowWeekHours, allCommittedHours));
-        } else{
-            report.setTotalNumberHoursAdvice(KnowledgeBase.generateAdviceForm(KnowledgeBase.underflowWeekHours, allCommittedHours));
         }
 
     }
