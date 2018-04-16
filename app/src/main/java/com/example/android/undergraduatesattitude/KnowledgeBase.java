@@ -155,4 +155,11 @@ public class KnowledgeBase {
         }
     }
 
+    public static ArrayList<String> getEducational() {
+        return Educational;
+    }
+
+    public static void setEducational(ArrayList<String> educational) {
+        Educational = educational;
+    }
 }

@@ -32,44 +32,43 @@ public class AddCourseActivity extends AppCompatActivity {
         difficultySpinner.setAdapter(difficultyAdapter);
     }
 
-    public void notifyCourseAdded(View view){
-        if(addCourse()){
+    public void notifyCourseAdded(View view) {
+        if (addCourse()) {
             Toast.makeText(getApplicationContext(), "Course Added", Toast.LENGTH_LONG).show();
-        }
-        else{
-            Toast.makeText(getApplicationContext() , "Please, fill Required fields" , Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Please, fill Required fields", Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public boolean addCourse () {
-        Spinner difficulty =findViewById(R.id.difficulty_spinner);
-        EditText name=findViewById(R.id.Name);
-        EditText hours=findViewById(R.id.Hours);
-        EditText minutes=findViewById(R.id.Minutes);
-        CheckBox assignments=findViewById(R.id.Assignments);
-        CheckBox finalProject=findViewById(R.id.Final_Project);
+    public boolean addCourse() {
+        Spinner difficulty = findViewById(R.id.difficulty_spinner);
+        EditText name = findViewById(R.id.Name);
+        EditText hours = findViewById(R.id.Hours);
+        EditText minutes = findViewById(R.id.Minutes);
+        CheckBox assignments = findViewById(R.id.Assignments);
+        CheckBox finalProject = findViewById(R.id.Final_Project);
 
-        if(difficulty.getSelectedItem().equals("Anticipate Difficulty Level") || name.getText().toString().matches("")){
+        if (difficulty.getSelectedItem().equals("Anticipate Difficulty Level") || name.getText().toString().matches("")) {
             return false;
         }
 
-        if(hours.getText().toString().matches("") && minutes.getText().toString().matches("")){
+        if (hours.getText().toString().matches("") && minutes.getText().toString().matches("")) {
             return false;
         }
 
-        if(hours.getText().toString().matches("")){
+        if (hours.getText().toString().matches("")) {
             hours.setText("0");
         }
 
-        if(minutes.getText().toString().matches("")){
+        if (minutes.getText().toString().matches("")) {
             minutes.setText("0");
         }
 
         Course.Difficulty difficulty1 = Course.Difficulty.valueOf(difficulty.getSelectedItem().toString());
 
         Course c = new Course(name.getText().toString(), new ActivityDuration(Integer.parseInt(hours.getText().toString()), Integer.parseInt(minutes.getText().toString())), difficulty1, assignments.isChecked(), finalProject.isChecked());
-        User.user.getCourses().add(c);
+        UserPrefs.user.getCourses().add(c);
         KnowledgeBase.createCourseActivity(c);
 
         MainActivity.prefs.save();
