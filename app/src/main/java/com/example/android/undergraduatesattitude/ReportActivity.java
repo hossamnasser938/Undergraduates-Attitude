@@ -63,12 +63,15 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     public void showTotalWeekAdvice(View view){
-        if(view.getVisibility() == View.GONE){
-            view.setVisibility(View.VISIBLE);
+
+        TextView weekAdvice = findViewById(R.id.week_advice);
+        if(weekAdvice.getVisibility() == View.GONE){
+            weekAdvice.setVisibility(View.VISIBLE);
         }
-        else if(view.getVisibility() == View.VISIBLE){
-            view.setVisibility(View.GONE);
+        else if(weekAdvice.getVisibility() == View.VISIBLE){
+            weekAdvice.setVisibility(View.GONE);
         }
+
     }
 
 }
