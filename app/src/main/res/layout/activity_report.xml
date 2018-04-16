@@ -16,8 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Week Percentage: "
+            android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:onClick="showTotalWeekAdvice"/>
 
 
         <TextView
@@ -35,7 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="italic"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:visibility="gone"/>
     
     <!-- Categories List -->
     <ExpandableListView

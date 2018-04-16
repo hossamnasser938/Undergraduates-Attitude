@@ -3,6 +3,7 @@ package com.example.android.undergraduatesattitude;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,15 @@ public class ReportActivity extends AppCompatActivity {
 
         for(CommittedCategory cc : listDataGroup){
             listDataChild.put(cc , cc.getCommittedActivities());
+        }
+    }
+
+    public void showTotalWeekAdvice(View view){
+        if(view.getVisibility() == View.GONE){
+            view.setVisibility(View.VISIBLE);
+        }
+        else if(view.getVisibility() == View.VISIBLE){
+            view.setVisibility(View.GONE);
         }
     }
 
