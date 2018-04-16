@@ -21,7 +21,6 @@ public class Week {
     public Week() {
         report = new Report();
         num++;
-        Log.e("WNUM : ",String.valueOf(num));
         wNum=num;
 
     }

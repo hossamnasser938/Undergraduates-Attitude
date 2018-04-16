@@ -20,23 +20,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         prefs = new UserPrefs(getApplicationContext());
-        
+
         if (UserPrefs.getSettings().contains(id)) {
             Toast.makeText(getApplicationContext(), "Found", Toast.LENGTH_SHORT).show();
-            Log.e("Found:","True");
             prefs.load();
             Intent intent = new Intent(getApplicationContext(), SubMainActivity.class);
             startActivity(intent);
-           // setContentView(R.layout.activity_sub_main);
-            Log.e("name : ",UserPrefs.user.getName());
+
         } else {
-           Toast.makeText(getApplicationContext(), "Not Found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Not Found", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_main);
-          //  prefs.load();
-            //UserPrefs.user=new User();
         }
-      
-       // setContentView(R.layout.activity_main);
+
 
     }
 

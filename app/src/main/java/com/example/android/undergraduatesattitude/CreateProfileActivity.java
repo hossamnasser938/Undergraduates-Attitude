@@ -26,7 +26,7 @@ public class CreateProfileActivity extends AppCompatActivity {
         EditText college = findViewById(R.id.College);
         EditText academicYear = findViewById(R.id.Academic_Year);
 
-        if(name.getText().toString().matches("") || college.getText().toString().isEmpty() || department.getText().toString().isEmpty() || academicYear.getText().toString().isEmpty()){
+        if (name.getText().toString().matches("") || college.getText().toString().isEmpty() || department.getText().toString().isEmpty() || academicYear.getText().toString().isEmpty()) {
             return false;
         }
 
@@ -35,20 +35,19 @@ public class CreateProfileActivity extends AppCompatActivity {
         UserPrefs.user.setDepartment(department.getText().toString());
         UserPrefs.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
 
-        MainActivity.prefs =new UserPrefs(getApplicationContext());
+        MainActivity.prefs = new UserPrefs(getApplicationContext());
         MainActivity.prefs.save();
 
         return true;
-      
+
     }
 
-    public void navigateToSubMainLayout(View view){
-        if(signUpUser()){
+    public void navigateToSubMainLayout(View view) {
+        if (signUpUser()) {
             Toast.makeText(getApplicationContext(), "Profile Created", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext() , SubMainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SubMainActivity.class);
             startActivity(intent);
-        }
-        else{
+        } else {
             Toast.makeText(getApplicationContext(), "Please, fill all fields", Toast.LENGTH_SHORT).show();
         }
 

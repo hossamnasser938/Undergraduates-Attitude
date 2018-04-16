@@ -19,17 +19,17 @@ public class SubMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sub_main);
     }
 
-    public void navigateToAddCourseActivity(View view){
+    public void navigateToAddCourseActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), AddCourseActivity.class);
         startActivity(intent);
     }
 
-    public void navigateToAddActivityActivity(View view){
+    public void navigateToAddActivityActivity(View view) {
         Intent intent = new Intent(getApplicationContext(), AddActivityActivity.class);
         startActivity(intent);
     }
 
-    public void navigateToReportActivity(View view){
+    public void navigateToReportActivity(View view) {
 
         AlertDialog.Builder chooseActionDialog = new AlertDialog.Builder(SubMainActivity.this);
         chooseActionDialog.setTitle("Choose Action");
@@ -39,19 +39,18 @@ public class SubMainActivity extends AppCompatActivity {
         adapter.add("End this week, Show its report, and Start a new week");
 
         chooseActionDialog.setAdapter(adapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
-                        intent.putExtra("EXTRA_WEEK_INDEX", Week.getNum());
-                        if(which == 0){
-                            startActivity(intent);
-                        }
-                        else{
-                            UserPrefs.user.getWeeks().add(new Week());
-                            startActivity(intent);
-                        }
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(getApplicationContext(), ReportActivity.class);
+                intent.putExtra("EXTRA_WEEK_INDEX", Week.getNum());
+                if (which == 0) {
+                    startActivity(intent);
+                } else {
+                    UserPrefs.user.getWeeks().add(new Week());
+                    startActivity(intent);
+                }
+            }
+        });
 
         chooseActionDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
@@ -64,13 +63,13 @@ public class SubMainActivity extends AppCompatActivity {
 
     }
 
-    public void navigateToShow(View view){
+    public void navigateToShow(View view) {
 
         AlertDialog.Builder chooseWeekDialog = new AlertDialog.Builder(SubMainActivity.this);
         chooseWeekDialog.setTitle("Choose week");
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item);
-        for(int i = 0; i < UserPrefs.user.getWeeks().size(); i++){
+        for (int i = 0; i < UserPrefs.user.getWeeks().size(); i++) {
             adapter.add("Week" + (i + 1));
         }
 

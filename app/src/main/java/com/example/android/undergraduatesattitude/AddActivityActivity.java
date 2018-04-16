@@ -35,7 +35,7 @@ public class AddActivityActivity extends AppCompatActivity {
                 ArrayList<String> activitySpinnerList = new ArrayList<>();
                 ArrayAdapter<String> activityAdapter;
 
-                if(position == 1){
+                if (position == 1) {
                     activitySpinnerList.add("Choose Course");
                     activitySpinnerList.addAll(KnowledgeBase.Educational);
                     activityAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, activitySpinnerList);
@@ -49,24 +49,23 @@ public class AddActivityActivity extends AppCompatActivity {
                     ArrayAdapter<String> courseActivityAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item, courseActivitySpinnerList);
                     courseActivityAdapter.setDropDownViewResource(R.layout.spinner_item);
                     courseActivitySpinner.setAdapter(courseActivityAdapter);
-                }
-                else{
+                } else {
                     courseActivitySpinner.setVisibility(View.GONE);
                     activitySpinnerList.add("Choose Activity");
-                    switch(position){
-                        case 2 :
+                    switch (position) {
+                        case 2:
                             activitySpinnerList.addAll(KnowledgeBase.Healthy);
                             break;
-                        case 3 :
+                        case 3:
                             activitySpinnerList.addAll(KnowledgeBase.Life);
                             break;
-                        case 4 :
+                        case 4:
                             activitySpinnerList.addAll(KnowledgeBase.Responsibility);
                             break;
-                        case 5 :
+                        case 5:
                             activitySpinnerList.addAll(KnowledgeBase.Entertainment);
                             break;
-                        case 6 :
+                        case 6:
                             activitySpinnerList.addAll(KnowledgeBase.Skills);
                             break;
                     }
@@ -85,12 +84,11 @@ public class AddActivityActivity extends AppCompatActivity {
 
     }
 
-    public void notifyActivityAdded(View view){
-        if(addActivity()){
-            Toast.makeText(getApplicationContext() , "Activity Added" , Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(getApplicationContext() , "Please, fill Required fields" , Toast.LENGTH_SHORT).show();
+    public void notifyActivityAdded(View view) {
+        if (addActivity()) {
+            Toast.makeText(getApplicationContext(), "Activity Added", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getApplicationContext(), "Please, fill Required fields", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -102,19 +100,19 @@ public class AddActivityActivity extends AppCompatActivity {
         EditText h = findViewById(R.id.Hours);
         EditText m = findViewById(R.id.Minutes);
 
-        if(activityCategory.getSelectedItem().equals("Choose Category") || activityName.getSelectedItem().equals("Choose Activity")){
+        if (activityCategory.getSelectedItem().equals("Choose Category") || activityName.getSelectedItem().equals("Choose Activity")) {
             return false;
         }
 
-        if(h.getText().toString().matches("") && m.getText().toString().matches("")){
+        if (h.getText().toString().matches("") && m.getText().toString().matches("")) {
             return false;
         }
 
-        if(h.getText().toString().matches("")){
+        if (h.getText().toString().matches("")) {
             h.setText("0");
         }
 
-        if(m.getText().toString().matches("")){
+        if (m.getText().toString().matches("")) {
             m.setText("0");
         }
 
@@ -132,8 +130,8 @@ public class AddActivityActivity extends AppCompatActivity {
                 int j = 0;
                 boolean found = false;
 
-                for(CommittedActivity ca : c.getCommittedActivities()){
-                    if(ca.getName().equals(committedActivity.getName())){
+                for (CommittedActivity ca : c.getCommittedActivities()) {
+                    if (ca.getName().equals(committedActivity.getName())) {
                         UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
                         found = true;
                         break;
@@ -141,7 +139,7 @@ public class AddActivityActivity extends AppCompatActivity {
                     j++;
                 }
 
-                if(!found){
+                if (!found) {
                     UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
                 }
             }

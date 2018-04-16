@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class User {
 
-    private static final int id=1;
+    private static final int id = 1;
     private String name;
     private String college;
     private int academicYear;
@@ -19,11 +19,10 @@ public class User {
     private ArrayList<Week> weeks;
 
 
-    public User(){
+    public User() {
 
         setCourses(new ArrayList<Course>());
         setWeeks(new ArrayList<Week>());
-        Log.e("WNum",(String.valueOf(Week.getNum())));
         getWeeks().add(new Week());
     }
 
@@ -36,7 +35,7 @@ public class User {
     }
 
     public Week getCurrentWeek() {
-        Log.e("WNum",(String.valueOf(Week.getNum())));
+        Log.e("WNum", (String.valueOf(Week.getNum())));
         return getWeeks().get(Week.getNum());
     }
 

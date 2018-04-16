@@ -56,8 +56,8 @@ public class ReportActivity extends AppCompatActivity {
 
         listDataChild = new HashMap<>();
 
-        for(CommittedCategory cc : listDataGroup){
-            listDataChild.put(cc , cc.getCommittedActivities());
+        for (CommittedCategory cc : listDataGroup) {
+            listDataChild.put(cc, cc.getCommittedActivities());
         }
     }
 
