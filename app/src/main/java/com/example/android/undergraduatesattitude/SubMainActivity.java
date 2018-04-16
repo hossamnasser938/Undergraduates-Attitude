@@ -47,7 +47,7 @@ public class SubMainActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else{
-                            User.user.getWeeks().add(new Week());
+                            UserPrefs.user.getWeeks().add(new Week());
                             startActivity(intent);
                         }
                     }
@@ -70,7 +70,7 @@ public class SubMainActivity extends AppCompatActivity {
         chooseWeekDialog.setTitle("Choose week");
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_item);
-        for(int i = 0; i < User.user.getWeeks().size(); i++){
+        for(int i = 0; i < UserPrefs.user.getWeeks().size(); i++){
             adapter.add("Week" + (i + 1));
         }
 

@@ -1,6 +1,8 @@
 package com.example.android.undergraduatesattitude;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -19,9 +21,18 @@ public class Week {
     public Week() {
         report = new Report();
         num++;
+        Log.e("WNUM : ",String.valueOf(num));
         wNum=num;
+
     }
 
+    public static void setNum(int num) {
+        Week.num = num;
+    }
+
+    public int getwNum(){
+        return wNum;
+}
     public static int getNum() {
         return num;
     }
@@ -57,5 +68,6 @@ public class Week {
     public Report getReport() {
         return report;
     }
+
 
 }

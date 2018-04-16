@@ -30,10 +30,10 @@ public class CreateProfileActivity extends AppCompatActivity {
             return false;
         }
 
-        User.user.setName(name.getText().toString());
-        User.user.setCollege(college.getText().toString());
-        User.user.setDepartment(department.getText().toString());
-        User.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
+        UserPrefs.user.setName(name.getText().toString());
+        UserPrefs.user.setCollege(college.getText().toString());
+        UserPrefs.user.setDepartment(department.getText().toString());
+        UserPrefs.user.setAcademicYear(Integer.parseInt(academicYear.getText().toString()));
 
         MainActivity.prefs =new UserPrefs(getApplicationContext());
         MainActivity.prefs.save();

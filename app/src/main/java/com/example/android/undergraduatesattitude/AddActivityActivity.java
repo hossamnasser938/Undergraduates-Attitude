@@ -96,7 +96,7 @@ public class AddActivityActivity extends AppCompatActivity {
     }
 
     public boolean addActivity() {
-        Report report = User.user.getCurrentWeek().getReport();
+        Report report = UserPrefs.user.getCurrentWeek().getReport();
         Spinner activityCategory = findViewById(R.id.category_spinner);
         Spinner activityName = findViewById(R.id.activity_spinner);
         EditText h = findViewById(R.id.Hours);
@@ -124,7 +124,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
         int i = 0;
 
-        for (CommittedCategory c : User.user.getCurrentWeek().getReport().getCommittedCategories()) {
+        for (CommittedCategory c : UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories()) {
             if (c.getCategory().equals(committedActivity.getCategory())) {
                 c.getCommittedDuration().setHours(c.getCommittedDuration().getHours() + committedActivity.getDuration().getHours());
                 c.getCommittedDuration().setMinutes(c.getCommittedDuration().getMinutes() + committedActivity.getDuration().getMinutes());
@@ -134,7 +134,7 @@ public class AddActivityActivity extends AppCompatActivity {
 
                 for(CommittedActivity ca : c.getCommittedActivities()){
                     if(ca.getName().equals(committedActivity.getName())){
-                        User.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
+                        UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().get(j).setDuration(ActivityDuration.addTwoDurations(ca.getDuration(), committedActivity.getDuration()));
                         found = true;
                         break;
                     }
@@ -142,16 +142,15 @@ public class AddActivityActivity extends AppCompatActivity {
                 }
 
                 if(!found){
-                    User.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
+                    UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(i).getCommittedActivities().add(committedActivity);
                 }
             }
             i++;
         }
 
-        /*
-        UserPrefs prefs =new UserPrefs(getApplicationContext());
-        prefs.save();
-        */
+
+        MainActivity.prefs.save();
+
 
         return true;
 
