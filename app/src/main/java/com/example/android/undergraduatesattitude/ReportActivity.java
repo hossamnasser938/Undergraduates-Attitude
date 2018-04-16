@@ -27,7 +27,7 @@ public class ReportActivity extends AppCompatActivity {
 
         int weekIndex = getIntent().getIntExtra("EXTRA_WEEK_INDEX", 0);
 
-        report = User.user.getWeeks().get(weekIndex).getReport();
+        report = UserPrefs.user.getWeeks().get(weekIndex).getReport();
 
         TextView weekPercentage = (TextView) findViewById(R.id.week_percentage);
         weekPercentage.setText(report.getOverallPercentage() + "%");
@@ -57,8 +57,8 @@ public class ReportActivity extends AppCompatActivity {
 
         listDataChild = new HashMap<>();
 
-        for(CommittedCategory cc : listDataGroup){
-            listDataChild.put(cc , cc.getCommittedActivities());
+        for (CommittedCategory cc : listDataGroup) {
+            listDataChild.put(cc, cc.getCommittedActivities());
         }
     }
 

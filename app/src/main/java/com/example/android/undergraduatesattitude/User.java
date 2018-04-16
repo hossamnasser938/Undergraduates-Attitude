@@ -1,5 +1,7 @@
 package com.example.android.undergraduatesattitude;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -8,16 +10,17 @@ import java.util.ArrayList;
 
 public class User {
 
-    private static final int id=1;
+    private static final int id = 1;
     private String name;
     private String college;
     private int academicYear;
     private String department;
     private ArrayList<Course> courses;
     private ArrayList<Week> weeks;
-    static public User user = new User();
 
-    public User(){
+
+    public User() {
+
         setCourses(new ArrayList<Course>());
         setWeeks(new ArrayList<Week>());
         getWeeks().add(new Week());
@@ -32,6 +35,7 @@ public class User {
     }
 
     public Week getCurrentWeek() {
+        Log.e("WNum", (String.valueOf(Week.getNum())));
         return getWeeks().get(Week.getNum());
     }
 
