@@ -57,9 +57,9 @@ public class KnowledgeBase {
     static public final OptimalActivity volunteerism = new OptimalActivity(Category.RESPONSIBILITY, "Volunteerism", new ActivityDuration(6, 0), new ActivityDuration(3, 0), OptimalActivity.Priority.RECOMMENDED);
     static public final OptimalActivity socializingAndCommunicating = new OptimalActivity(Category.RESPONSIBILITY, "Socializing and communicating", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.MANDATORY);
     static public final OptimalActivity telephoneCallsAndEMails = new OptimalActivity(Category.RESPONSIBILITY, "Telephone call and e-mails", new ActivityDuration(3, 0), new ActivityDuration(2, 0), OptimalActivity.Priority.RECOMMENDED);
-    static public final OptimalActivity hobby = new OptimalActivity(Category.ENTERTAINMENT, "Hobby", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
-    static public final OptimalActivity socialMedia = new OptimalActivity(Category.ENTERTAINMENT, "Social Media", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
-    static public final OptimalActivity leisure = new OptimalActivity(Category.ENTERTAINMENT, "Leisure", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.RECOMMENDED);
+    static public final OptimalActivity hobby = new OptimalActivity(Category.ENTERTAINMENT, "Hobby", new ActivityDuration(5, 0), new ActivityDuration(3, 0), OptimalActivity.Priority.RECOMMENDED);
+    static public final OptimalActivity socialMedia = new OptimalActivity(Category.ENTERTAINMENT, "Social Media", new ActivityDuration(4, 0), new ActivityDuration(2, 0), OptimalActivity.Priority.RECOMMENDED);
+    static public final OptimalActivity leisure = new OptimalActivity(Category.ENTERTAINMENT, "Leisure", new ActivityDuration(4, 0), new ActivityDuration(2, 0), OptimalActivity.Priority.RECOMMENDED);
     static public final OptimalActivity languageAcquisition = new OptimalActivity(Category.SKILLS, "Language Acquisition", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.HIGHLY_RECOMMENDED);
     static public final OptimalActivity teaching = new OptimalActivity(Category.SKILLS, "Teaching", new ActivityDuration(14, 0), new ActivityDuration(7, 0), OptimalActivity.Priority.OPTIONAL);
     static public final OptimalActivity writing = new OptimalActivity(Category.SKILLS, "Writing", new ActivityDuration(7, 0), new ActivityDuration(0, 0), OptimalActivity.Priority.OPTIONAL);
