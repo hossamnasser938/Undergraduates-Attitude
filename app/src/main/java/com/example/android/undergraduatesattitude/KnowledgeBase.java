@@ -3,8 +3,6 @@ package com.example.android.undergraduatesattitude;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 /**
  *
@@ -73,7 +71,7 @@ public class KnowledgeBase {
      */
     static public final OptimalCategory HealthtCat = new OptimalCategory(Category.HEALTH,new ActivityDuration(63, 0), new ActivityDuration(42, 0));
     static public final OptimalCategory LifeCat = new OptimalCategory(Category.LIFE, new ActivityDuration(73, 0),new ActivityDuration(0, 0));
-    static public OptimalCategory EducationalCat = new OptimalCategory(Category.EDUCATIONAL, new ActivityDuration(0, 0),new ActivityDuration(0, 0));
+    private static OptimalCategory EducationalCat = new OptimalCategory(Category.EDUCATIONAL, new ActivityDuration(0, 0),new ActivityDuration(0, 0));
     static public final OptimalCategory ResponsibilityCat = new OptimalCategory(Category.RESPONSIBILITY,new ActivityDuration(25, 0), new ActivityDuration(13, 0));
     static public final OptimalCategory EntertainmentCat = new OptimalCategory(Category.ENTERTAINMENT, new ActivityDuration(14, 0), new ActivityDuration(7, 0));
     static public final OptimalCategory SkillsCat = new OptimalCategory(Category.SKILLS, new ActivityDuration(42, 0), new ActivityDuration(14, 0));
@@ -83,14 +81,14 @@ public class KnowledgeBase {
     ArrayList of all categories
      */
     static public final ArrayList<String> optimalCategoryList = new ArrayList<>(Arrays.asList("EDUCATIONAL","HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
-    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(EducationalCat,HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
+    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(getEducationalCat(),HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
 
 
     /*
     ArrayList of all activities
      */
-    static public ArrayList<String> optimalActivityList = new ArrayList<>(Arrays.asList("Sleeping", "Sports","HouseHold", "Eating and Drinking", "Purchasing goods and services", "Transportation", "Religious and Spiritual Activities", "Planning", "Volunteerism", "Socializing and communicating", "Telephone call and e-mails", "Hobby","Social Media","Leisure","Language Acquisition", "Teaching", "Writing", "Reading"));
-    static public ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation, religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneCallsAndEMails, hobby, socialMedia, leisure, languageAcquisition, teaching, writing, reading));
+    private static ArrayList<String> optimalActivityList = new ArrayList<>(Arrays.asList("Sleeping", "Sports","HouseHold", "Eating and Drinking", "Purchasing goods and services", "Transportation", "Religious and Spiritual Activities", "Planning", "Volunteerism", "Socializing and communicating", "Telephone call and e-mails", "Hobby","Social Media","Leisure","Language Acquisition", "Teaching", "Writing", "Reading"));
+    private static ArrayList<OptimalActivity> optimalActivities = new ArrayList<>(Arrays.asList(sleeping, sports, houseHold, eatingAndDrinking, purchasingGoodsAndServices, transportation, religiousAndSpiritualActivities, planning, volunteerism, socializingAndCommunicating, telephoneCallsAndEMails, hobby, socialMedia, leisure, languageAcquisition, teaching, writing, reading));
 
 
     /*
@@ -104,13 +102,13 @@ public class KnowledgeBase {
      */
 
     static public ActivityDuration getActivityOptimalMaxDuration(String name){
-        return optimalActivities.get(optimalActivityList.indexOf(name)).getMaxDuration();
+        return getOptimalActivities().get(getOptimalActivityList().indexOf(name)).getMaxDuration();
 
     }
 
 
     static public ActivityDuration getActivityOptimalMinDuration(String name){
-        return optimalActivities.get(optimalActivityList.indexOf(name)).getMinDuration();
+        return getOptimalActivities().get(getOptimalActivityList().indexOf(name)).getMinDuration();
     }
 
 
@@ -125,7 +123,7 @@ public class KnowledgeBase {
 
 
     public static OptimalActivity.Priority getActivityPriority(String activityName){
-        for(OptimalActivity activity : optimalActivities){
+        for(OptimalActivity activity : getOptimalActivities()){
             if(activity.getName().equals(activityName)){
                 return activity.getPriority();
             }
@@ -137,10 +135,10 @@ public class KnowledgeBase {
     static public void createCourseActivity(Course course){
         Educational.add(course.getName());
         OptimalActivity courseActivity = new OptimalActivity(Category.EDUCATIONAL, course.getName(), Course.calculateAllCourseHours(course), Course.calculateAllCourseHours(course), OptimalActivity.Priority.MANDATORY);
-        EducationalCat.setMaxDuration(ActivityDuration.addTwoDurations(EducationalCat.getMaxDuration(), courseActivity.getMaxDuration()));
-        EducationalCat.setMinDuration(ActivityDuration.addTwoDurations(EducationalCat.getMinDuration(), courseActivity.getMinDuration()));
-        optimalActivityList.add(course.getName());
-        optimalActivities.add(courseActivity);
+        getEducationalCat().setMaxDuration(ActivityDuration.addTwoDurations(getEducationalCat().getMaxDuration(), courseActivity.getMaxDuration()));
+        getEducationalCat().setMinDuration(ActivityDuration.addTwoDurations(getEducationalCat().getMinDuration(), courseActivity.getMinDuration()));
+        getOptimalActivityList().add(course.getName());
+        getOptimalActivities().add(courseActivity);
     }
 
 
@@ -161,5 +159,29 @@ public class KnowledgeBase {
 
     public static void setEducational(ArrayList<String> educational) {
         Educational = educational;
+    }
+
+    public static OptimalCategory getEducationalCat() {
+        return EducationalCat;
+    }
+
+    public static void setEducationalCat(OptimalCategory educationalCat) {
+        EducationalCat = educationalCat;
+    }
+
+    public static ArrayList<String> getOptimalActivityList() {
+        return optimalActivityList;
+    }
+
+    public static void setOptimalActivityList(ArrayList<String> optimalActivityList) {
+        KnowledgeBase.optimalActivityList = optimalActivityList;
+    }
+
+    public static ArrayList<OptimalActivity> getOptimalActivities() {
+        return optimalActivities;
+    }
+
+    public static void setOptimalActivities(ArrayList<OptimalActivity> optimalActivities) {
+        KnowledgeBase.optimalActivities = optimalActivities;
     }
 }

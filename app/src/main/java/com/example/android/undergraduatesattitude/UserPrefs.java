@@ -73,6 +73,18 @@ public class UserPrefs {
         }
         String edu = gson.toJson(KnowledgeBase.getEducational());
         editor.putString("edu", edu);
+
+        //Hosam
+        String eduCat = gson.toJson(KnowledgeBase.getEducationalCat());
+        editor.putString("eduCat", eduCat);
+
+        String optActList = gson.toJson(KnowledgeBase.getOptimalActivityList());
+        editor.putString("optActList", optActList);
+
+        String optActs = gson.toJson(KnowledgeBase.getOptimalActivities());
+        editor.putString("optActs", optActs);
+        //
+
         editor.commit();
         editor.apply();
 
@@ -103,6 +115,23 @@ public class UserPrefs {
         ArrayList<String> e = gson.fromJson(edu, new TypeToken<ArrayList<String>>() {
         }.getType());
         KnowledgeBase.setEducational(e);
+
+        //Hosam
+        String eduCat = settings.getString("eduCat", "");
+        OptimalCategory ec = gson.fromJson(eduCat, new TypeToken<OptimalCategory>() {
+        }.getType());
+        KnowledgeBase.setEducationalCat(ec);
+
+        String optActList = settings.getString("optActList", "");
+        ArrayList<String> oal = gson.fromJson(optActList, new TypeToken<ArrayList<String>>() {
+        }.getType());
+        KnowledgeBase.setOptimalActivityList(oal);
+
+        String optActs = settings.getString("optActs", "");
+        ArrayList<OptimalActivity> oas = gson.fromJson(optActs, new TypeToken<ArrayList<OptimalActivity>>() {
+        }.getType());
+        KnowledgeBase.setOptimalActivities(oas);
+        //
     }
 
     public static SharedPreferences getSettings() {
