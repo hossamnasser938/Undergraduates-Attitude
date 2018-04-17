@@ -27,13 +27,11 @@ public class MainActivity extends AppCompatActivity {
         prefs = new UserPrefs(getApplicationContext());
 
         if (UserPrefs.getSettings().contains(id)) {
-            Toast.makeText(getApplicationContext(), "Found", Toast.LENGTH_SHORT).show();
             prefs.load();
             Intent intent = new Intent(getApplicationContext(), SubMainActivity.class);
             startActivity(intent);
 
         } else {
-            Toast.makeText(getApplicationContext(), "Not Found", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_main);
         }
 

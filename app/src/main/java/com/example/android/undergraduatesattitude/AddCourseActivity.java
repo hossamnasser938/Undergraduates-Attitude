@@ -34,7 +34,7 @@ public class AddCourseActivity extends AppCompatActivity {
 
     public void notifyCourseAdded(View view) {
         if (addCourse()) {
-            Toast.makeText(getApplicationContext(), "Course Added", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Course Added", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getApplicationContext(), "Please, fill Required fields", Toast.LENGTH_SHORT).show();
         }
