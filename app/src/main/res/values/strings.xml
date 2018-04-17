@@ -21,4 +21,5 @@
     <string name="get_current_week_report">Get Current Week Report</string>
     <string name="compare_current_vs_previous">Compare Current VS Previous</string>
     <string name="show_previous_weeks_report">Show Previous Weeks Reports</string>
+    <string name="submain">Main</string>
 </resources>

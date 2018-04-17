@@ -18,6 +18,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".SubMainActivity"
+            android:label="@string/submain" />
+        <activity
             android:name=".CreateProfileActivity"
             android:label="@string/create_profile"
             android:parentActivityName=".MainActivity"/>
