@@ -137,6 +137,8 @@ public class KnowledgeBase {
         OptimalActivity courseActivity = new OptimalActivity(Category.EDUCATIONAL, course.getName(), Course.calculateAllCourseHours(course), Course.calculateAllCourseHours(course), OptimalActivity.Priority.MANDATORY);
         getEducationalCat().setMaxDuration(ActivityDuration.addTwoDurations(getEducationalCat().getMaxDuration(), courseActivity.getMaxDuration()));
         getEducationalCat().setMinDuration(ActivityDuration.addTwoDurations(getEducationalCat().getMinDuration(), courseActivity.getMinDuration()));
+        UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(0).setMaxDuration(getEducationalCat().getMaxDuration());
+        UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(0).setMinDuration(getEducationalCat().getMinDuration());
         getOptimalActivityList().add(course.getName());
         getOptimalActivities().add(courseActivity);
     }

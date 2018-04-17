@@ -15,8 +15,8 @@ public class CommittedCategory extends OptimalCategory {
     public CommittedCategory(Category category, ActivityDuration committedDuration) {
         super(category);
         this.committedDuration = committedDuration;
-        setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.toString()));
-        setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.toString()));
+        setMaxDuration(KnowledgeBase.getCategoryOptimalMaxDuration(category.name()));
+        setMinDuration(KnowledgeBase.getCategoryOptimalMinDuration(category.name()));
         setCommittedActivities(new ArrayList<CommittedActivity>());
 
         committedActivities = new ArrayList<CommittedActivity>();
