@@ -81,7 +81,7 @@ public class KnowledgeBase {
     ArrayList of all categories
      */
     static public final ArrayList<String> optimalCategoryList = new ArrayList<>(Arrays.asList("EDUCATIONAL","HEALTH","LIFE","RESPONSIBILITY","ENTERTAINMENT","SKILLS"));
-    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(getEducationalCat(),HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
+    static public final ArrayList<OptimalCategory> optimalCategories = new ArrayList<>(Arrays.asList(EducationalCat,HealthtCat,LifeCat,ResponsibilityCat,EntertainmentCat,SkillsCat));
 
 
     /*
