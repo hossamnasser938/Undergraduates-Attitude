@@ -141,6 +141,7 @@ public class KnowledgeBase {
         UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(0).setMinDuration(getEducationalCat().getMinDuration());
         getOptimalActivityList().add(course.getName());
         getOptimalActivities().add(courseActivity);
+        UserPrefs.user.getCurrentWeek().getReport().getCommittedCategories().get(0).getCommittedActivities().add(new CommittedActivity(Category.EDUCATIONAL, course.getName(), new ActivityDuration(0, 0)));
     }
 
 
